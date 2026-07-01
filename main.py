@@ -21,7 +21,7 @@ box_rect = pygame.Rect((1000,500),(200,200))
 floor = pygame.transform.scale(pygame.image.load('Green.webp'),(screen_width,200))
 floor_rect = pygame.Rect((0,screen_height-200),(floor.get_size()))
 
-margin = 10
+margin = 5
 
 
 
@@ -69,8 +69,6 @@ while True:
     #if player_rect_col.right 
 
     def collision(collider):
-        print(player_rect_col.right >= collider.col_rect.left + margin and player_rect_col.right <= collider.col_rect.right  ,player_rect_col.left <= collider.col_rect.right - margin and player_rect_col.left >= collider.col_rect.left )
-        collider.col_rect.center = collider.rect.center
         if True:
             # Checks if either the left or right side of the player is over the collider 
             if (
@@ -82,14 +80,16 @@ while True:
                         player.y_accel = 0
                     if player.y_vel > 0:
                         player.y_vel = 0
-                    player.y = collider.col_rect.top - player.img.get_height() 
+                    player.y = collider.col_rect.top - player.img.get_height()
+                   
                 #bottom side
-                elif player_rect_col.top > collider.col_rect.top and player_rect_col.top <= collider.col_rect.bottom -1:
+                elif player_rect_col.top > collider.col_rect.top and player_rect_col.top <= collider.col_rect.bottom +1:
                     if player.y_accel < 0:
                         player.y_accel = 0
                     if player.y_vel < 0:
                         player.y_vel = 0
                     player.y = collider.col_rect.bottom 
+                    
                 
             # Checks if either the top or bottom side of the player is over the collider
             if (
@@ -102,18 +102,19 @@ while True:
                     if player.x_vel > 0:
                         player.x_vel = 0
                     player.x = collider.col_rect.left-player.img.get_width() 
+
                 #right side
-                elif player_rect_col.left > collider.col_rect.left and player_rect_col.left <= collider.col_rect.right -1:
+                elif player_rect_col.left > collider.col_rect.left and player.x <= collider.col_rect.right  :
                     if player.x_accel < 0: 
                         player.x_accel = 0
                     if player.x_vel < 0: 
                         player.x_vel = 0
                     player.x = collider.col_rect.right 
-
-    #physics
+    print(player.x , player.left)
+    gravity = 1
     def physics():
         
-        player.y_vel += 1
+        player.y_vel += gravity
         print(player.y_vel,player.y_accel)
     collision(random_obj)
     #physics()
@@ -126,7 +127,7 @@ while True:
    
 
 
-    print(random_obj.rect.left,player_rect_col.right)
+    #print(random_obj.rect.right,player_rect_col.left)
     
 
     for event in pygame.event.get():
