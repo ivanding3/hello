@@ -79,8 +79,7 @@ player = Player(0,0,0,0,0,0,pygame.transform.scale(pygame.image.load('boxplayer.
 
 
 #player = pygame.transform.scale(pygame.image.load('boxplayer.webp'), (100,100))
-player_rect_col = pygame.Rect((0,0),(player.img.get_width(),player.img.get_height()))
-player_rect_col.center = center((100,100),(player.pos))
+
 
 
 
