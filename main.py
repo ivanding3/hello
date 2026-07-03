@@ -1,7 +1,9 @@
 import pygame
 from sys import exit
-from player import *
+from player_stuff import *
 from collider_objs import *
+from ui import *
+from physics import *
 
 screen_width = 1600
 screen_height = 900
@@ -21,6 +23,11 @@ box_rect = pygame.Rect((1000,500),(200,200))
 
 
 margin = 5
+
+
+
+
+
 
 
 game_running = True
@@ -57,54 +64,7 @@ while game_running:
 
 
 
-    def collision(collider):
-        if True:
-            # Checks if either the left or right side of the player is over the collider 
-            if (
-                player.right >= collider.rect.left + margin and player.right <= collider.rect.right 
-                or player.left <= collider.rect.right - margin and player.left >= collider.rect.left ): 
-                #top side
-                if player.bottom < collider.rect.bottom and player.bottom >= collider.rect.top +1 : 
-                    if player.y_accel > 0:
-                        player.y_accel = 0
-                    if player.y_vel > 0:
-                        player.y_vel = 0
-                    player.y = collider.rect.top - player.img.get_height()
-                   
-                #bottom side
-                elif player.top > collider.rect.top and player.top <= collider.rect.bottom +1:
-                    if player.y_accel < 0:
-                        player.y_accel = 0
-                    if player.y_vel < 0:
-                        player.y_vel = 0
-                    player.y = collider.rect.bottom 
-                    
-                
-            # Checks if either the top or bottom side of the player is over the collider
-            if (
-                player.bottom >= collider.rect.top + margin and player.bottom <= collider.rect.bottom 
-                or player.top <= collider.rect.bottom - margin and player.top >= collider.rect.top ):
-                #left side
-                if player.right < collider.rect.right and player.right >= collider.rect.left +1:
-                    if player.x_accel > 0:
-                        player.x_accel = 0
-                    if player.x_vel > 0:
-                        player.x_vel = 0
-                    player.x = collider.rect.left-player.img.get_width() 
 
-                #right side
-                elif player.left > collider.rect.left and player.x <= collider.rect.right  :
-                    if player.x_accel < 0: 
-                        player.x_accel = 0
-                    if player.x_vel < 0: 
-                        player.x_vel = 0
-                    player.x = collider.rect.right 
-    
-    gravity = 1
-    def physics():
-        
-        player.y_vel += gravity
-        print(player.y_vel,player.y_accel)
     collision(random_obj)
     collision(floor)
     #physics()
@@ -135,7 +95,7 @@ while game_running:
     screen.blit(floor.img,(floor.rect))
     #screen.blit(box,box_rect.topleft)
     screen.blit(random_obj.img,random_obj.rect)
-
+    test_button.run_button()
 
 
     screen.blit(player.img, (player.pos))    

@@ -6,7 +6,7 @@ font = pygame.font.SysFont("Arial",300)
 def draw_text(text,font,color,pos):
     img = font.render(text, True, color)
     screen.blit(img,pos)
-    
+print(pygame.font.get_fonts()  )  
 while True:
     screen.fill((255,255,255))
 
@@ -20,3 +20,4 @@ while True:
             exit()
 
     pygame.display.flip() 
+    

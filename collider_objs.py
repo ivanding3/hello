@@ -1,5 +1,5 @@
 import pygame
-from player import *
+from player_stuff import *
 class collider:
     def __init__(self,rect,img):
         self.rect = rect

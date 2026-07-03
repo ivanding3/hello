@@ -67,16 +67,17 @@ class Player:
     
 
 
-        
+player = Player(500,500,0,0,0,0,pygame.transform.scale(pygame.image.load('boxplayer.webp'), (100,100)),100,100)
 
 
 
 
-player = Player(0,0,0,0,0,0,pygame.transform.scale(pygame.image.load('boxplayer.webp'), (100,100)),100,100)
+#create player
 
 
 
-#player = pygame.transform.scale(pygame.image.load('boxplayer.webp'), (100,100))
+
+
 
 
 

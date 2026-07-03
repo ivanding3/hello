@@ -1,2 +1,2 @@
 #map data idk
-#grid size 10 px
+#grid size 16 px
