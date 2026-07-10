@@ -1,10 +1,12 @@
 import pygame
 from sys import exit
-from player_stuff import *
+from sprites import *
 from collider_objs import *
 from ui import *
 from physics import *
+from map import *
 
+#time_init = time.time()
 screen_width = 1600
 screen_height = 900
 resolution = (screen_width,screen_height)
@@ -12,9 +14,9 @@ resolution = (screen_width,screen_height)
 clock = pygame.time.Clock()
 
 pygame.display.init()
-screen = pygame.display.set_mode((resolution),vsync=1)
+screen = pygame.display.set_mode((1800,1000),vsync=1)
 
-background = pygame.transform.scale(pygame.image.load('Untitled.jpg'),(resolution))
+background = pygame.transform.scale(pygame.image.load('BG image.png'),(map_size))
 
 
 box = pygame.transform.scale(pygame.image.load('Green.webp'),(200,200))
@@ -33,42 +35,19 @@ margin = 5
 game_running = True
 while game_running:
     
-    dt = clock.tick(1000)/1000
-    keys_pressed = pygame.key.get_pressed()
     
-    #movement x
-    if keys_pressed[pygame.K_w] == True: #and if vel < a vel and if on ground
-        #player.y_vel = -500 
-        player.y_accel = -500
-    elif keys_pressed[pygame.K_s] == True: # increase max accel down
-        player.y_accel = 500 
-    else:
-        player.y_accel = 0
-    player.x_vel += player.x_accel*dt
-    player.x += player.x_vel*dt
+    keys_pressed = pygame.key.get_pressed()
 
-    #movement y
-    if keys_pressed[pygame.K_a] == True: #
-        player.x_accel = -500
-    elif keys_pressed[pygame.K_d] == True:
-        player.x_accel = 500     
-    else:
-        player.x_accel = 0
-    player.y_vel += player.y_accel*dt
-    player.y += player.y_vel*dt    
+    dt = clock.tick(10000)/1000
 
-        
-  
-
-
-
-
-
-
+    #print(player.vel,player.accel,dt)
+    player.movement(dt)
     collision(random_obj)
     collision(floor)
-    #physics()
-
+    camera.follow_player()
+    player.air_res(dt)
+    player.gravity(dt)
+    #camera
 
     
 
@@ -77,7 +56,7 @@ while game_running:
    
 
 
-    #print(random_obj.rect.right,player.left)
+    #print(random_obj.right,player.left)
     
 
     for event in pygame.event.get():
@@ -85,18 +64,22 @@ while game_running:
             pygame.quit()
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            player.pos = pygame.mouse.get_pos()  
+            player.pos = (pygame.mouse.get_pos()[0] - camera.x ,pygame.mouse.get_pos()[1] - camera.y)
+            
     
-#update
-    player.pos = (player.x,player.y)
-    player.topleft = player.pos
+
+
 #drawing
-    screen.blit(background,(0,0))
-    screen.blit(floor.img,(floor.rect))
-    #screen.blit(box,box_rect.topleft)
-    screen.blit(random_obj.img,random_obj.rect)
+    camera.surface.blit(background,(0,0))
+    camera.surface.blit(floor.surface,(floor.rect))
+
+    camera.surface.blit(random_obj.surface,random_obj.rect)
+    
+
+
+    camera.surface.blit(player.surface, (player.pos))
+    screen.blit(camera.surface,(0,0),camera.display_part)
     test_button.run_button()
-
-
-    screen.blit(player.img, (player.pos))    
+    #pygame.draw.circle(screen,(00,00,00),(-camera.x+800,-camera.y+450),70)
+  
     pygame.display.flip()    
