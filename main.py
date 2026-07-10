@@ -1,22 +1,20 @@
 import pygame
 from sys import exit
-from sprites import *
-from collider_objs import *
-from ui import *
-from physics import *
-from map import *
+import sprites 
+import collider_objs 
+import ui 
+import physics 
+import map 
+import vars 
 
-#time_init = time.time()
-screen_width = 1600
-screen_height = 900
-resolution = (screen_width,screen_height)
+
 
 clock = pygame.time.Clock()
 
 pygame.display.init()
-screen = pygame.display.set_mode((1800,1000),vsync=1)
 
-background = pygame.transform.scale(pygame.image.load('BG image.png'),(map_size))
+
+background = pygame.transform.scale(pygame.image.load('BG image.png'),(map.map_size))
 
 
 box = pygame.transform.scale(pygame.image.load('Green.webp'),(200,200))
@@ -24,7 +22,7 @@ box_rect = pygame.Rect((1000,500),(200,200))
 
 
 
-margin = 5
+
 
 
 
@@ -38,15 +36,15 @@ while game_running:
     
     keys_pressed = pygame.key.get_pressed()
 
-    dt = clock.tick(10000)/1000
+    vars.dt = clock.tick(240)/1000
 
     #print(player.vel,player.accel,dt)
-    player.movement(dt)
-    collision(random_obj)
-    collision(floor)
-    camera.follow_player()
-    player.air_res(dt)
-    player.gravity(dt)
+    sprites.player.movement()
+    physics.collision(collider_objs.random_obj)
+    physics.collision(collider_objs.floor)
+    sprites.camera.follow_player()
+    sprites.player.air_res()
+    sprites.player.gravity()
     #camera
 
     
@@ -64,22 +62,22 @@ while game_running:
             pygame.quit()
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            player.pos = (pygame.mouse.get_pos()[0] - camera.x ,pygame.mouse.get_pos()[1] - camera.y)
+            sprites.player.pos = (pygame.mouse.get_pos()[0] - sprites.camera.x ,pygame.mouse.get_pos()[1] - sprites.camera.y)
             
     
 
 
 #drawing
-    camera.surface.blit(background,(0,0))
-    camera.surface.blit(floor.surface,(floor.rect))
+    sprites.camera.surface.blit(background,(0,0))
+    sprites.camera.surface.blit(collider_objs.floor.surface,(collider_objs.floor.rect))
 
-    camera.surface.blit(random_obj.surface,random_obj.rect)
+    sprites.camera.surface.blit(collider_objs.random_obj.surface,collider_objs.random_obj.rect)
     
 
 
-    camera.surface.blit(player.surface, (player.pos))
-    screen.blit(camera.surface,(0,0),camera.display_part)
-    test_button.run_button()
+    sprites.camera.surface.blit(sprites.player.surface, (sprites.player.pos))
+    vars.screen.blit(sprites.camera.surface,(0,0),sprites.camera.display_part)
+    ui.test_button.run_button()
     #pygame.draw.circle(screen,(00,00,00),(-camera.x+800,-camera.y+450),70)
   
     pygame.display.flip()    

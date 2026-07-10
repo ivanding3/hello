@@ -1,7 +1,7 @@
 import pygame
-import map
+import vars
+
 pygame.init()
-screen = pygame.display.set_mode((1600,900),vsync=1)
 
 
 def draw_text(text,size,color,pos,dest):
@@ -70,7 +70,7 @@ class button:
             draw_text(self.text,self.font_size,(0,0,0),(self.pos[0]+self.margin,self.pos[1]+self.margin),dest)
         else:
             draw_text(self.text,self.font_size,(80,80,80),(self.pos[0]+self.margin,self.pos[1]+self.margin),dest)
-    def run_button(self,dest = screen):
+    def run_button(self,dest = vars.screen):
         self.over_button_detect()
         self.pressed_detect()
         self.display(dest)
@@ -95,7 +95,7 @@ test_button = button((0,0),30,(0,255,0),"hello world")
 if __name__ == '__main__':
     test_button = button((0,0),30,(0,255,0),"hello world")
     while True:
-        screen.fill((255,255,255))
+        vars.screen.fill((255,255,255))
         test_button.run_button()
 
 

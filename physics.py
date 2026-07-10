@@ -1,5 +1,5 @@
 from sprites import *
-
+from vars import *
 
 def collision(collider,margin = 5):
     if True:

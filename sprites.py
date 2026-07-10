@@ -1,4 +1,6 @@
 import pygame
+import vars
+import map
 
 def center(size,pos):
     width = size[0]
@@ -84,7 +86,7 @@ class sprite:
     def centery(self,val):
         self.y = val-self.height/2
 
-    def movement(self,dt):
+    def movement(self):
 
 
         keys_pressed = pygame.key.get_pressed()
@@ -94,8 +96,8 @@ class sprite:
             self.accely = 500 
         else:
             self.accely = 0
-        self.vely += self.accely*dt 
-        self.y += self.vely*dt 
+        self.vely += self.accely* vars.dt 
+        self.y += self.vely*vars.dt 
 
         #movement y
         if keys_pressed[pygame.K_a] == True: #
@@ -104,22 +106,45 @@ class sprite:
             self.accelx = 500     
         else:
             self.accelx = 0
-        self.velx += self.accelx*dt
-        self.x += self.velx*dt    
+        self.velx += self.accelx*vars.dt
+        self.x += self.velx*vars.dt    
     
-    def air_res(self,dt):
-        self.vel = [vel-vel*dt*0.5 for vel in self.vel]
+    def air_res(self):
+        self.vel = [vel-vel*vars.dt*0.5 for vel in self.vel]
 
-    def gravity(self,dt):
-        self.vely += 1000*dt
+    def gravity(self):
+        self.vely += 1000*vars.dt
 
+player = sprite((800,500),(100,100),'boxplayer.webp',(0,0),(0,0))
+
+class Camera(sprite):
+    def __init__(self, pos, size, texture_name = 'Untitled.jpg', vel=(0,0), accel=(0,0)):
+        super().__init__(pos, size, texture_name, vel, accel)
+
+    def follow_player(self,player = player):
+        x_dist = -self.x + (vars.screen_width / 2) - player.centerx 
+        y_dist = -self.y + (vars.screen_height / 2) - player.centery
+        if (x_dist) ** 2 + (y_dist) ** 2 >= 1000: #if the player is outside a certain radius from the center
+            self.x+= x_dist*abs(x_dist)/10000
+            self.y+= y_dist*abs(y_dist)/10000
+
+
+    @property
+    def display_part(self):
+        screen = pygame.Rect((-self.x,-self.y),(vars.resolution))
+        return(screen)
+    @display_part.setter
+    def display_part(self,tuple):
+        self.pos = (tuple[0] , tuple[1])
+        
+camera = Camera((0,0),map.map_size) 
 
 
 
     
 
 
-player = sprite((0,0),(100,100),'boxplayer.webp',(0,0),(0,0))
+
 
 
 
