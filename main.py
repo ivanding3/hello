@@ -1,9 +1,8 @@
 import pygame
 from sys import exit
 import sprites 
-import collider_objs 
 import ui 
-import physics 
+import collisions 
 import map 
 import vars 
 
@@ -40,12 +39,13 @@ while game_running:
 
     #print(player.vel,player.accel,dt)
     sprites.player.movement()
-    physics.collision(collider_objs.random_obj)
-    physics.collision(collider_objs.floor)
-    sprites.camera.follow_player()
+    collisions.collision(map.random_obj)
+    collisions.collision(map.floor)
+    map.camera.follow_player()
     sprites.player.air_res()
     sprites.player.gravity()
     #camera
+
 
     
 
@@ -62,21 +62,21 @@ while game_running:
             pygame.quit()
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            sprites.player.pos = (pygame.mouse.get_pos()[0] - sprites.camera.x ,pygame.mouse.get_pos()[1] - sprites.camera.y)
+            sprites.player.pos = (pygame.mouse.get_pos()[0] - map.camera.x ,pygame.mouse.get_pos()[1] - map.camera.y)
             
     
 
 
 #drawing
-    sprites.camera.surface.blit(background,(0,0))
-    sprites.camera.surface.blit(collider_objs.floor.surface,(collider_objs.floor.rect))
+    map.camera.surface.blit(background,(0,0))
+    map.camera.surface.blit(map.floor.surface,(map.floor.rect))
 
-    sprites.camera.surface.blit(collider_objs.random_obj.surface,collider_objs.random_obj.rect)
+    map.camera.surface.blit(map.random_obj.surface,map.random_obj.rect)
     
 
 
-    sprites.camera.surface.blit(sprites.player.surface, (sprites.player.pos))
-    vars.screen.blit(sprites.camera.surface,(0,0),sprites.camera.display_part)
+    map.camera.surface.blit(sprites.player.surface, (sprites.player.pos))
+    vars.screen.blit(map.camera.surface,(0,0),map.camera.display_part)
     ui.test_button.run_button()
     #pygame.draw.circle(screen,(00,00,00),(-camera.x+800,-camera.y+450),70)
   
