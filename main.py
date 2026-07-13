@@ -77,12 +77,12 @@ while game_running:
     map_stuff.camera.surface.blit(map_stuff.floor.surface,(map_stuff.floor.pos))
 
     map_stuff.camera.surface.blit(map_stuff.random_obj.surface,map_stuff.random_obj.pos)
-    
+    # inefficient
     with open('map_objs.txt','r') as f:
         f = f.readlines()
         if len(f)> file_len:
+            map_stuff.map_objects.clear()
             file_len = 0
-            print('hi')
             for line in f:
                 data = line.split('/')
                 pos = tuple(map(int,data[0].replace('(','').replace(')','').split(',')))     
@@ -90,9 +90,9 @@ while game_running:
                 img = data[2]
                 file_len += 1
                 
-                map_stuff.map_objects.append(sprites.sprite(pos,size,img))                                               #asdyfasd saydsa bpdsagdad this shouldnt be running every time a lineis read
+                map_stuff.map_objects.append(sprites.sprite(pos,size,img))                                               
             
-                                                                    # and it shouldnt be constantly reading
+                                                          
                 
             
                             #make a dict or something that i can loop through for collisions and drawing
