@@ -57,7 +57,6 @@ class Map_maker():
 
 
     def display_ghost(self):
-        pass
         size = [y-x for x,y in zip(self.init,[x-y for x,y in zip(pygame.mouse.get_pos(),camera.pos)])]
         camera.surface.fill((00,00,00),pygame.Rect(self.init,size))
     
@@ -77,22 +76,9 @@ class Map_maker():
             self.creating = False            
     def map_mode(self):
         if self.creating:
-            size = [y-x for x,y in zip(self.init,[x-y for x,y in zip(pygame.mouse.get_pos(),camera.pos)])]
-            camera.surface.fill((00,00,00),pygame.Rect(self.init,size))
+            self.display_ghost()
   
-#        if pygame.event.peek(pygame.MOUSEBUTTONDOWN):
-#            self.initializing()
-#        if self.creating:
-#            size = [y-x for x,y in zip(self.init,[x-y for x,y in zip(pygame.mouse.get_pos(),camera.pos)])]
-#            camera.surface.fill((00,00,00),pygame.Rect(self.init,size))
-#        if pygame.event.peek(pygame.MOUSEBUTTONUP) and self.creating:
-#            self.finalizing()
-#            self.size = [y-x for x,y in zip(self.init,self.final)]
-#
-#            with open('map_objs.txt','a') as f:
-#                f.write(f"sprite = sprites.sprite({self.init},{self.size},'Green.webp'),{self.obj_count}\n")
-#            self.obj_count+=1
-#            self.creating = False
+
 map_maker = Map_maker()  
 
     

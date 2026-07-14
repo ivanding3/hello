@@ -59,13 +59,13 @@ while game_running:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if ui.debug_button.pressed:
                 sprites.player.pos = (pygame.mouse.get_pos()[0] - map_stuff.camera.x,
                                         pygame.mouse.get_pos()[1] - map_stuff.camera.y)
             if ui.map_mode_button.pressed:
                 map_stuff.map_maker.initializing(event)
-        if event.type == pygame.MOUSEBUTTONUP:
+        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             if ui.map_mode_button.pressed:
                 map_stuff.map_maker.finalizing(event)
 
@@ -103,6 +103,7 @@ while game_running:
     map_stuff.camera.surface.blit(sprites.player.surface, (sprites.player.pos))
     if ui.map_mode_button.pressed:
         map_stuff.map_maker.map_mode()
+
         for i in range(map_stuff.map_size[0]//16):
             pygame.draw.line(map_stuff.camera.surface,(200,200,200),(i*16,0),(i*16,map_stuff.map_size[1]))
         for i in range(map_stuff.map_size[1]//16):
