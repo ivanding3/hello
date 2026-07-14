@@ -5,8 +5,11 @@ import ui
 import collisions 
 import map_stuff 
 import vars 
-
-
+#menu screen still not done
+#make a timer for everything so i can see what  is taking so long later
+#collision fixes-4 different directional surfaces
+#implement mechanics
+#create some gameplay
 
 clock = pygame.time.Clock()
 
@@ -28,15 +31,20 @@ pygame.event.set_blocked(pygame.MOUSEMOTION)
 
 game_running = True
 while game_running:
-    
+
+    margin = (sum(map(abs,sprites.player.vel))//100)
+    print(margin)
+    if margin>5:
+        vars.margin = margin
     
     keys_pressed = pygame.key.get_pressed()
 
-    vars.dt = clock.tick()/1000
+    
     print(f'fps = {1/vars.dt}')
 
     #print(player.vel,player.accel,dt)
     sprites.player.movement()
+    
     collisions.collision(map_stuff.random_obj)
     collisions.collision(map_stuff.floor)
     map_stuff.camera.follow_player()
@@ -50,7 +58,7 @@ while game_running:
     
 
    
-
+    #vars.margin = [(x+y)//2 for x,y in sprites.player.vel]//100
 
     #print(random_obj.right,player.left)
     
@@ -95,8 +103,7 @@ while game_running:
                                                           
                 
             
-                            #make a dict or something that i can loop through for collisions and drawing
-                            #make a timer for everything so i can see what the fuck is taking so dam long
+
     for obj in map_stuff.map_objects:
         map_stuff.camera.surface.blit(obj.surface,obj.pos)
         collisions.collision(obj)
@@ -118,4 +125,5 @@ while game_running:
     ui.map_mode_button.run_button()
     #pygame.draw.circle(screen,(00,00,00),(-camera.x+800,-camera.y+450),70)
 
-    pygame.display.flip()    
+    pygame.display.update(pygame.Rect((0,0),vars.resolution))    
+    vars.dt = clock.tick(75)/1000

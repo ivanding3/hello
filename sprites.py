@@ -86,9 +86,13 @@ class sprite:
     def centery(self,val):
         self.y = val-self.height/2
 
+
+
+class Player(sprite):
+    def __init__(self, pos, size, texture_name, vel=(0, 0), accel=(0, 0)):
+        super().__init__(pos, size, texture_name, vel, accel)
+    
     def movement(self):
-
-
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_w] == True: #and if vel < a vel and if on ground 
             self.vely = -500
@@ -109,13 +113,21 @@ class sprite:
         self.velx += self.accelx*vars.dt
         self.x += self.velx*vars.dt    
     
+    def on_floor(self):
+        pass
+    
+    def on_wall(self): 
+        pass
+
+
     def air_res(self):
         self.vel = [vel-vel*vars.dt*0.5 for vel in self.vel]
 
     def gravity(self):
-        self.vely += 1000*vars.dt
+        self.vely += 1000*vars.dt     
 
-player = sprite((800,500),(100,100),'boxplayer.webp')
+
+player = Player((800,500),(100,100),'boxplayer.webp')
 
  
 
