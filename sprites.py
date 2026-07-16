@@ -112,13 +112,41 @@ class Player(sprite):
         self.input_direction = input_direction
         self.vel_direction = vel_direction
         self.dash_cooldown_time = 0
+        self.left_colliding = []
+        self.right_colliding = []
+        self.top_colliding = []
+        self.bottom_colliding = []
+        self.colliding_left = False
+        self.colliding_right = False
+        self.colliding_top = False
+        self.colliding_bottom = False
     @property
     def input_direction(self):
         return (self.input_directionx,self.input_directiony)
     @input_direction.setter
     def input_direction(self,tuple):
         (self.input_directionx,self.input_directiony) = tuple  
+    def clear_colliders(self):
+        self.left_colliding = []
+        self.right_colliding = []
+        self.top_colliding = []
+        self.bottom_colliding = []
 
+    def move_left(self):
+        self.accelx += -500
+    def move_right(self):
+        self.accelx += 500
+    
+    def jump(self):
+        if self.collided_bottom:
+            self.vel = -500
+            self.collided_bottom = False
+        else:
+            self.accely += -500
+
+    def fast_fall(self):
+        self.accely +=500
+    '''
     def movement(self):
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_UP] and keys_pressed[pygame.K_DOWN]:
@@ -156,7 +184,7 @@ class Player(sprite):
         else:
             self.accelx = 0
             self.input_directionx = 0
-   
+    '''
     
 
     
@@ -173,6 +201,15 @@ class Player(sprite):
     def update_movement(self):
         self.velx += self.accelx*vars.dt
         self.vely += self.accely*vars.dt
+        self.accel = (0,0)
+        if (self.colliding_left and self.vel_directionx == -1 or
+            self.colliding_right and self.vel_directionx == 1):
+            self.velx = 0
+        if (self.colliding_top and self.vel_directiony == -1 or
+            self.colliding_bottom and self.vel_directiony == 1):
+            
+            self.vely = 0
+        print(self.vel)
         self.x += self.velx*vars.dt
         self.y += self.vely*vars.dt
         self.vel_direction = tuple(map(sign,self.vel))
@@ -192,7 +229,7 @@ class Player(sprite):
         if self.dash_cooldown_time > 1:
             if (self.input_directionx !=0 and 
                 self.input_directiony !=0):
-                if self.input_directionx != 0:
+                if self.input_directionx != 0: ########fix repeated sadgiuysauldgaliusdaguliagdauidagsldaguisdiguasdlugigaulsdugiuasdggulid
                     if sign(self.velx) == self.input_directionx:
                         self.velx += 500/root_2*self.input_directionx
                     else:
@@ -251,7 +288,11 @@ class crumble_block(sprite):
                 
     def update_crumble(self):
         self.crumble_cooldown_time += vars.dt
-        
+
+class spike(sprite):
+    def __init__(self, pos, size, texture_name, vel=(0, 0), accel=(0, 0)):
+        super().__init__(pos, size, texture_name, vel, accel)
+
 crumble = crumble_block((1536, 1040),(112, 16),'boxplayer.webp')
 player = Player((800,500),(100,100),'boxplayer.webp')
 

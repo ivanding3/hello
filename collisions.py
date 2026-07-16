@@ -29,16 +29,18 @@ def sort_closest(dists):
         closest.append((abs(dists[i][1]),dists[i][0]))
     return dists[sorted(closest)[0][1]]
 
-
+'''
      
 def collided_left(obj,static_obj):
     if (obj.right == static_obj.left and 
         obj.bottom > static_obj.top and 
         obj.top < static_obj.bottom):
+        print('collided_left')
         return True
     else:
+        print('collided_left1')
         return False
-                 
+
 def collider_left(obj,static_obj):
     if (obj.right < static_obj.left + vars.margin and
         obj.vel_directionx != -1 and
@@ -54,8 +56,10 @@ def collided_right(obj,static_obj):
     if (obj.left == static_obj.right and
         obj.bottom > static_obj.top and 
         obj.top < static_obj.bottom):
+        print('collided_right')
         return True
     else:
+        print('collided_right1')
         return False
                  
 
@@ -73,8 +77,10 @@ def collided_top(obj,static_obj):
     if (obj.bottom == static_obj.top and
         obj.right > static_obj.left and 
         obj.left < static_obj.right):
+        print('collided_top')
         return True
     else:
+        print('collided_top1')
         return False
 
                 
@@ -92,8 +98,10 @@ def collided_bottom(obj,static_obj):
     if (obj.top == static_obj.bottom and 
         obj.right > static_obj.left and 
         obj.left < static_obj.right):
+        print('collided_bottom')
         return True
     else:
+        print('collided_bottom1')
         return False
                 
 def collider_bottom(obj,static_obj):
@@ -159,7 +167,76 @@ def collision(obj,static_obj):
         collider_bottom(obj,static_obj)
         obj.colliding_top = False
         static_obj.colliding_bottom = False
+'''
 
 
 
 
+
+    
+def collision_left(obj,static_obj):
+    if (obj.vel_directionx != 1 and
+        obj.bottom > static_obj.top - vars.margin and 
+        obj.top < static_obj.bottom + vars.margin and
+        obj.left >= static_obj.right and
+        obj.left + obj.velx*vars.dt <= static_obj.right):
+            obj.collided_left = True
+            obj.left = static_obj.right
+            obj.left_colliding.append(static_obj)
+
+def collision_right(obj,static_obj):
+    if (obj.vel_directionx != -1 and
+        obj.bottom > static_obj.top - vars.margin and 
+        obj.top < static_obj.bottom + vars.margin and
+        obj.right <= static_obj.left and
+        obj.right + obj.velx*vars.dt >= static_obj.left):
+            obj.collided_right = True
+            obj.right = static_obj.left
+            obj.right_colliding.append(static_obj)
+
+def collision_top(obj,static_obj):
+    if (obj.vel_directiony != 1 and
+        obj.right > static_obj.left and 
+        obj.left < static_obj.right and
+        obj.top >= static_obj.bottom and
+        obj.top + obj.vely*vars.dt <= static_obj.bottom):
+            obj.collided_top = True
+            obj.top = static_obj.bottom
+            obj.top_colliding.append(static_obj)
+def collision_bottom(obj,static_obj):
+    
+    if (obj.vel_directiony != -1 and
+        obj.right > static_obj.left and 
+        obj.left < static_obj.right and
+        obj.bottom <= static_obj.top and
+        obj.bottom + obj.vely*vars.dt >= static_obj.top):
+            obj.collided_bottom = True
+            obj.bottom = static_obj.top
+            obj.bottom_colliding.append(static_obj)
+
+def collision(obj,static_obj):
+    collision_left(obj,static_obj)
+    collision_right(obj,static_obj)
+    collision_top(obj,static_obj)
+    collision_bottom(obj,static_obj)
+
+def check_colliding(obj = sprites.player):
+
+    if len(obj.left_colliding) > 0:
+        obj.colliding_left = True
+    else:
+        obj.colliding_left = False 
+    if len(obj.right_colliding) > 0:
+        obj.colliding_right = True 
+    else:
+         obj.colliding_right = False
+    if len(obj.top_colliding) > 0:
+        obj.colliding_top = True 
+    else:
+         obj.colliding_top = False
+    if len(obj.bottom_colliding) > 0:
+        obj.colliding_bottom = True
+    else:
+        obj.colliding_bottom = False
+    obj.clear_colliders()
+    

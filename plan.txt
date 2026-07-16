@@ -1,0 +1,12 @@
+#menu screen still not done
+#hitboxes for map mkaing
+#implement mechanics ****
+#create some gameplay
+#needs last input direction
+#last created shape is sticky from the left and right??
+#coyote time
+#needs util counter
+#seperate movement method into seperate methods
+#margin  needs fixing
+
+#collisions rework

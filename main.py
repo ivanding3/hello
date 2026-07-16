@@ -14,14 +14,12 @@ import vars
 #coyote time
 #needs util counter
 #seperate movement method into seperate methods
+#margin  needs fixing
+
+#collisions rework
 clock = pygame.time.Clock()
-
 pygame.display.init()
-
-
 background = pygame.transform.scale(pygame.image.load('BG image.png'),(map_stuff.map_size))
-
-
 file_len = 0
 
 
@@ -35,28 +33,26 @@ game_running = True
 while game_running:
     frame +=1
     #print(frame)
-    margin = (sum(map(abs,sprites.player.vel))//30)
-    if margin>5:
-        vars.margin = margin
+
+    #margin = (sum(map(abs,sprites.player.vel))//10)
+    #if margin>5:
+    #    vars.margin = margin
     
-    keys_pressed = pygame.key.get_pressed()
+    
     
     #print(f'fps = {1/vars.dt}')
 
     #print(player.vel,player.accel,dt)
-    sprites.player.movement()
+
     
 
     map_stuff.camera.follow_player()
 
     #camera
-    sprites.player.update_movement()
-    sprites.player.air_res()
-    sprites.player.gravity()
+
     
 
 
-    
     #inputs
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -76,9 +72,37 @@ while game_running:
                 sprites.player.dash()
             if event.key == pygame.K_z:
                 sprites.player.create_crumble(sprites.crumble)
-         
+            
+    keys_pressed = pygame.key.get_pressed()    
 
-    
+    if keys_pressed[pygame.K_c]:
+        sprites.player.jump()
+
+    if keys_pressed[pygame.K_LEFT] and keys_pressed[pygame.K_RIGHT]:
+        sprites.player.input_directionx = 0
+    else:
+        if keys_pressed[pygame.K_LEFT]:
+            sprites.player.input_directionx = -1
+            sprites.player.move_left()                
+        if keys_pressed[pygame.K_RIGHT]:
+            sprites.player.input_directionx = 1
+            sprites.player.move_right()
+        else:
+            sprites.player.input_directionx = 0
+
+    if keys_pressed[pygame.K_UP] and keys_pressed[pygame.K_DOWN]:                       #still needs side collision ifs
+        sprites.player.input_directiony = 0   
+    else:
+        if keys_pressed[pygame.K_UP]:
+            sprites.player.input_directiony = -1
+        if keys_pressed[pygame.K_DOWN]:
+            sprites.player.input_directiony = 1
+            sprites.player.fast_fall()
+        else:
+            sprites.player.input_directiony = 0
+                            
+
+                    
 
 
 #drawing
@@ -129,12 +153,15 @@ while game_running:
     if not sprites.crumble.crumbled:
         collisions.collision(sprites.player,sprites.crumble)
         map_stuff.camera.surface.blit(sprites.crumble.surface,sprites.crumble.pos)
-
+    collisions.check_colliding()
     vars.screen.blit(map_stuff.camera.surface,(0,0),map_stuff.camera.display_part)
-    
 
+    sprites.player.update_movement()
+    sprites.player.air_res()
+    #sprites.player.gravity()
 
-
+    print(sprites.player.colliding_left,sprites.player.colliding_right,sprites.player.colliding_top,sprites.player.colliding_bottom,sprites.player.vel_direction)
+    print(sprites.player.pos,sprites.player.vel,sprites.player.accel)
     ui.test_button.run_button()
     ui.debug_button.run_button()
     ui.map_mode_button.run_button()
