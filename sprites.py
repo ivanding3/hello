@@ -24,6 +24,12 @@ class sprite:
         self.size = size
         self.surface = pygame.transform.scale(pygame.image.load(texture_name),size)
         self.rect = pygame.Rect(pos,size)
+        self.colliding_left = False
+        self.colliding_right = False
+        self.colliding_top = False
+        self.collided_top = False
+        self.colliding_bottom = False
+        self.collided_bottom = False
 
     @property
     def pos(self):
@@ -105,11 +111,6 @@ class Player(sprite):
         super().__init__(pos, size, texture_name, vel, accel)
         self.input_direction = input_direction
         self.vel_direction = vel_direction
-        self.colliding_left = False
-        self.colliding_right = False
-        self.colliding_top = False
-        self.colliding_bottom = False
-        self.collided_bottom = False
         self.dash_cooldown_time = 0
     @property
     def input_direction(self):
@@ -222,13 +223,37 @@ class Player(sprite):
     def dash_cooldown(self):
         self.dash_cooldown_time = 0
 
+    def create_crumble(self,crumble_block):
+        crumble_block.center = [x+y for x,y in zip(self.center,[direction*200 for direction in self.input_direction])]
+        crumble_block.crumbled = False
+        crumble_block.crumble_cooldown_time = 0
+        crumble_block.crumbling = False
+        crumble_block.collided_top = False
+class crumble_block(sprite):
+    def __init__(self, pos, size, texture_name, vel=(0, 0), accel=(0, 0)):
+        super().__init__(pos, size, texture_name, vel, accel)
+        self.crumble_time = 1
+        self.crumble_cooldown_time = 0
+        self.crumbled = False
+        self.crumbling = False
 
-    def create_crumble(self):
-        pass
-
-
-
-
+    def crumble_animation(self):
+        ...       
+    def crumble(self):
+        if not self.crumbling:
+            self.crumble_animation()
+            self.crumbling = True
+        else:
+            self.update_crumble()
+            if self.crumble_cooldown_time > self.crumble_time:
+                self.crumbled = True
+                self.crumble_cooldown_time = 0
+                self.collided_top = False
+                
+    def update_crumble(self):
+        self.crumble_cooldown_time += vars.dt
+        
+crumble = crumble_block((1536, 1040),(112, 16),'boxplayer.webp')
 player = Player((800,500),(100,100),'boxplayer.webp')
 
     

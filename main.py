@@ -12,6 +12,8 @@ import vars
 #needs last input direction
 #last created shape is sticky from the left and right??
 #coyote time
+#needs util counter
+#seperate movement method into seperate methods
 clock = pygame.time.Clock()
 
 pygame.display.init()
@@ -72,6 +74,8 @@ while game_running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_x:
                 sprites.player.dash()
+            if event.key == pygame.K_z:
+                sprites.player.create_crumble(sprites.crumble)
          
 
     
@@ -117,7 +121,15 @@ while game_running:
         map_stuff.camera.surface.blit(collider_obj.surface,collider_obj.pos)
         collisions.collision(sprites.player,collider_obj)
 
-            
+   
+     
+    #crumble
+    if sprites.crumble.collided_top:
+        sprites.crumble.crumble()
+    if not sprites.crumble.crumbled:
+        collisions.collision(sprites.player,sprites.crumble)
+        map_stuff.camera.surface.blit(sprites.crumble.surface,sprites.crumble.pos)
+
     vars.screen.blit(map_stuff.camera.surface,(0,0),map_stuff.camera.display_part)
     
 
@@ -130,4 +142,4 @@ while game_running:
 
     pygame.display.update(pygame.Rect((0,0),vars.resolution))    
     vars.dt = clock.tick(75)/1000
-    #print(sprites.player.accel,sprites.player.vel,sprites.player.vel_direction)
+    #print(sprites.player.accel,sprites.player.vel,sprites.player.pos)

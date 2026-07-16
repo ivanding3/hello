@@ -117,41 +117,48 @@ def collision(obj,static_obj):
         obj.right = static_obj.left
         #right side of obj
         obj.colliding_right = True
+        static_obj.colliding_left = True
         obj.velx = 0
         obj.accelx = 0
     else:
         collider_left(obj,static_obj)
         obj.colliding_right = False
+        static_obj.colliding_left = False
     
     if collided_right(obj,static_obj):
         obj.left = static_obj.right
         obj.colliding_left = True
+        static_obj.colliding_right = True
         obj.velx = 0
         obj.accelx = 0      
     else:
         collider_right(obj,static_obj)
         obj.colliding_left = False
+        static_obj.colliding_right = False
 
     if collided_top(obj,static_obj):
         obj.bottom = static_obj.top
         obj.collided_bottom = True
         obj.colliding_bottom = True
+        static_obj.collided_top = True
         obj.vely = 0
         obj.accely = 0
     else:
         collider_top(obj,static_obj)
         obj.colliding_bottom = False
+        static_obj.colliding_top = False
 
 
     if collided_bottom(obj,static_obj):
         obj.top = static_obj.bottom
         obj.colliding_top = True
+        static_obj.colliding_bottom = True
         obj.vely = 0   
         obj.accely = 0
     else:
         collider_bottom(obj,static_obj)
         obj.colliding_top = False
-    #print(obj.colliding_left,obj.colliding_right,obj.colliding_top,obj.colliding_bottom)    
+        static_obj.colliding_bottom = False
 
 
 
