@@ -189,7 +189,6 @@ class Player(sprite):
            
 
     def dash(self):
-        print(self.dash_cooldown_time)
         if self.dash_cooldown_time > 1:
             if (self.input_directionx !=0 and 
                 self.input_directiony !=0):
