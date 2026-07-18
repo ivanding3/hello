@@ -8,7 +8,7 @@ import json
 #map data idk
 #grid size 16 px
 
-map_size = (6400,1800)
+map_size = (3200,1600)
 
 map_objects = []
 
@@ -44,7 +44,12 @@ class Room():
         self.objs = []
         self.spikes = []
         self.loaders = []
-
+        self.room = {
+            'room' : [],
+            'spikes': [],
+            'objs': [],
+            'loaders': [],
+            }
 
 
     def update_room_objs(self):
@@ -69,10 +74,10 @@ class Room():
         for loader in self.loaders:
             loader.check_overlap()
 
-room_0 = Room((3200,1800),(0,0))
+room_0 = Room((map_size),(0, 0))
 map_objs = {
     '(0, 0)': {
-            'room' : Room((3200,1800),(0,0)),
+            'room' : Room((map_size),(0, 0)),
             'objs': [sprites.sprite((0,1600),(1600,160),'Green.webp')],
             'spikes': [],
             'loaders': [],
@@ -108,10 +113,11 @@ class Camera(sprites.sprite):
         self.y -= player.vely/50
 
     def enter_new_room(self,room):
-        self.pos = (0,0)
+        self.pos = (-sprites.player.x + vars.screen_width//2,-sprites.player.y + vars.screen_height//2)
         self.size = map_objs[self.room_key]['room'].size
         self.curr_room = room
-
+        self.room_key = str(self.curr_room.pos)
+        self.curr_room.update_room_objs()
     @property
     def display_part(self):
         screen = pygame.Rect((-self.x,-self.y),(vars.resolution))
@@ -133,51 +139,78 @@ class loading_zone(sprites.sprite):
         self.surface = pygame.Surface(size)
         self.surface.fill((12,34,56))
         self.surface.set_colorkey((12,34,56))
-        self.linked_loading_zone = None
+        self.linked_loader = None
+        self.loader_linked = False
         #1,2,3,4 correspond to left,top,right,bottom
         if self.left == 0:
             self.room_side = 1
-            room_pos = (self.room.x-1,self.room.y)
-            self.linked_room = map_objs.setdefault(str(room_pos),Room((3200,1800),room_pos))
-        elif self.right == vars.screen_width:
+            linked_room_pos = (self.room.x-1,self.room.y)
+            map_objs.setdefault(str(linked_room_pos) , {'room' : Room((map_size),linked_room_pos),
+                                                'objs': [],
+                                                'spikes': [],
+                                                'loaders': [],
+                                                })
+            self.linked_room = map_objs[str(linked_room_pos)]['room']
+        elif self.right == main_camera.curr_room.size[0]:
             self.room_side = 3
-            room_pos = (self.room.x+1,self.room.y)
-            self.linked_room = map_objs.setdefault(str(room_pos),Room((3200,1800),room_pos))
+            linked_room_pos = (self.room.x+1,self.room.y)
+            map_objs.setdefault(str(linked_room_pos) , {'room' : Room((map_size),linked_room_pos),
+                                                'objs': [],
+                                                'spikes': [],
+                                                'loaders': [],
+                                                })
+            self.linked_room = map_objs[str(linked_room_pos)]['room']
         elif self.top == 0:
             self.room_side = 2
-            room_pos = (self.room.x,self.room.y-1)
-            self.linked_room = map_objs.setdefault(str(room_pos),Room((3200,1800),room_pos))
-        elif self.bottom == vars.screen_height:
+            linked_room_pos = (self.room.x,self.room.y-1)
+            map_objs.setdefault(str(linked_room_pos) , {'room' : Room((map_size),linked_room_pos),
+                                                'objs': [],
+                                                'spikes': [],
+                                                'loaders': [],
+                                                })
+            self.linked_room = map_objs[str(linked_room_pos)]['room']
+        elif self.bottom == main_camera.curr_room.size[1]:
             self.room_side = 4
-            room_pos = (self.room.x,self.room.y+1)
-            self.linked_room = map_objs.setdefault(str(room_pos),Room((3200,1800),room_pos))
-        for linked_loader in self.linked_room.loaders:
-            if linked_loader.room_side == (self.room_side+2 or 
-                                           self.room_side-2):
-                self.linked_loading_zone = linked_loader
+            linked_room_pos = (self.room.x,self.room.y+1)
+            map_objs.setdefault(str(linked_room_pos) , {'room' : Room((map_size),linked_room_pos),
+                                                'objs': [],
+                                                'spikes': [],
+                                                'loaders': [],
+                                                })
+            self.linked_room = map_objs[str(linked_room_pos)]['room']
 
+    def link_loaders(self):
+        for loader in self.linked_room.room['loaders']:
+            if (loader.room_side == self.room_side+2 or 
+                loader.room_side == self.room_side-2 ):
+                self.linked_loader = loader
+                self.linked_loader.linked_loader = self
+                print(self.linked_loader,self.linked_loader.linked_loader)
+                self.loader_linked = True
+                self.linked_loader.loader_linked = True
     def loading_animation(self):
         ...
 
     def load_linked_area(self):
-        if self.linked_loading_zone == None:
+        if self.linked_loader == None:
             sprites.player.center = (400,400)
         elif self.room_side%2 == 1:
             if self.room_side == 1:
-                sprites.player.right = self.linked_loading_zone.left - 128
+                sprites.player.right = self.linked_loader.left - 128
             else:
-                sprites.player.left = self.linked_loading_zone.right + 128
-            sprites.player.bottom = self.linked_loading_zone.bottom
+                sprites.player.left = self.linked_loader.right + 128
+            sprites.player.bottom = self.linked_loader.bottom
         else:
             if self.room_side == 2:
-                sprites.player.bottom = self.linked_loading_zone.top - 128
+                sprites.player.bottom = self.linked_loader.top - 128
                 #maybe give some vel
             else:
-                sprites.player.top = self.linked_loading_zone.bottom + 128
-            sprites.player.center = self.linked_loading_zone.center
+                sprites.player.top = self.linked_loader.bottom + 128
+            sprites.player.center = self.linked_loader.center
         #camera stuff
         main_camera.enter_new_room(self.linked_room)
-        
+        if not self.loader_linked:
+            self.link_loaders()
 
     def check_overlap(self):
         if collisions.overlapping(sprites.player,self):
@@ -250,17 +283,8 @@ class Map_maker():
         if self.obj_type == 'spike':
             map_objs[main_camera.room_key]['spikes'].append(Spike(self.init,snap_to_grid(self.size),texture_name='boxplayer.webp'))
         if self.obj_type == 'loader':
-            print(self.curr_room)
-            map_objs[main_camera.room_key]['loaders'].append(loading_zone((self.init),snap_to_grid(self.size),self.curr_room))
+            map_objs[main_camera.room_key]['loaders'].append(loading_zone((self.init),snap_to_grid(self.size),main_camera.curr_room))
         self.curr_room.update_room_objs()
-
-        #with open('map_objs.json','w') as f:
-        #    json.dump(map_objs,f)
-    
-
-
-        #with open('map.json','a') as f:
-
 
 
     def map_mode(self):

@@ -56,6 +56,7 @@ while game_running:
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if ui.debug_button.pressed:
+                print(sprites.player.pos)
                 sprites.player.pos = (pygame.mouse.get_pos()[0] - map_stuff.main_camera.x,
                                         pygame.mouse.get_pos()[1] - map_stuff.main_camera.y)
 
@@ -119,7 +120,7 @@ while game_running:
                 map_stuff.map_objects.append(sprites.sprite(pos,size,img))                                               
                                                                
                 
-            
+    print(map_stuff.main_camera.pos)        
 
 
 
@@ -178,8 +179,6 @@ while game_running:
         button.run_button()
     if ui.map_mode_button.pressed:
         ui.run_map_subbuttons()
-
-
 
     pygame.display.update(pygame.Rect((0,0),vars.resolution))    
     vars.dt = clock.tick(75)/1000
