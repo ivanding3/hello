@@ -5,21 +5,16 @@ import ui
 import collisions 
 import map_stuff 
 import vars 
-#menu screen still not done
-#hitboxes for map mkaing
-#implement mechanics ****
-#create some gameplay
-#needs last input direction
-#last created shape is sticky from the left and right??
-#coyote time
-#needs util counter
-#seperate movement method into seperate methods
-#margin  needs fixing
+import json
+from pathlib import Path
+
+
 
 #collisions rework
 clock = pygame.time.Clock()
 pygame.display.init()
-background = pygame.transform.scale(pygame.image.load('BG image.png'),(map_stuff.map_size))
+background = pygame.transform.scale(pygame.image.load(Path.cwd()/'assets'/'BG image.png'),(map_stuff.map_size))
+background = pygame.Surface.convert(background)
 file_len = 0
 
 
@@ -27,16 +22,16 @@ file_len = 0
 pygame.event.set_blocked(pygame.MOUSEMOTION)
 
 frame = 0
-
+map_stuff.main_camera.curr_room.update_room_objs()
 
 game_running = True
 while game_running:
     frame +=1
     #print(frame)
 
-    #margin = (sum(map(abs,sprites.player.vel))//10)
-    #if margin>5:
-    #    vars.margin = margin
+    margin = (sum(map(abs,sprites.player.vel))//100)
+    if margin>5:
+        vars.margin = margin
     
     
     
@@ -46,58 +41,57 @@ while game_running:
 
     
 
-    map_stuff.camera.follow_player()
+    map_stuff.main_camera.follow_player()
 
     #camera
 
     
 
-
+    vars.events = pygame.event.get()
+    vars.keys_pressed = pygame.key.get_pressed()   
     #inputs
-    for event in pygame.event.get():
+    for event in vars.events:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if ui.debug_button.pressed:
-                sprites.player.pos = (pygame.mouse.get_pos()[0] - map_stuff.camera.x,
-                                        pygame.mouse.get_pos()[1] - map_stuff.camera.y)
-            if ui.map_mode_button.pressed:
-                map_stuff.map_maker.initializing(event)
-        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-            if ui.map_mode_button.pressed:
-                map_stuff.map_maker.finalizing(event)
+                sprites.player.pos = (pygame.mouse.get_pos()[0] - map_stuff.main_camera.x,
+                                        pygame.mouse.get_pos()[1] - map_stuff.main_camera.y)
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_x:
                 sprites.player.dash()
             if event.key == pygame.K_z:
                 sprites.player.create_crumble(sprites.crumble)
             
-    keys_pressed = pygame.key.get_pressed()    
+     
 
-    if keys_pressed[pygame.K_c]:
+    if vars.keys_pressed[pygame.K_c]:
         sprites.player.jump()
 
-    if keys_pressed[pygame.K_LEFT] and keys_pressed[pygame.K_RIGHT]:
+
+    if vars.keys_pressed[pygame.K_LEFT] and vars.keys_pressed[pygame.K_RIGHT]:
         sprites.player.input_directionx = 0
     else:
-        if keys_pressed[pygame.K_LEFT]:
+        if vars.keys_pressed[pygame.K_LEFT]:
             sprites.player.input_directionx = -1
             sprites.player.move_left()                
-        elif keys_pressed[pygame.K_RIGHT]:
+        elif vars.keys_pressed[pygame.K_RIGHT]:
             sprites.player.input_directionx = 1
             sprites.player.move_right()
         else:
             sprites.player.input_directionx = 0
 
-    if keys_pressed[pygame.K_UP] and keys_pressed[pygame.K_DOWN]:                       #still needs side collision ifs
+    if vars.keys_pressed[pygame.K_UP] and vars.keys_pressed[pygame.K_DOWN]:
         sprites.player.input_directiony = 0   
     else:
-        if keys_pressed[pygame.K_UP]:
+        if vars.keys_pressed[pygame.K_UP]:
             sprites.player.input_directiony = -1
-        elif keys_pressed[pygame.K_DOWN]:
+        elif vars.keys_pressed[pygame.K_DOWN]:
             sprites.player.input_directiony = 1
-            sprites.player.fast_fall()
+            if not vars.keys_pressed[pygame.K_c]:
+                sprites.player.fast_fall()
         else:
             sprites.player.input_directiony = 0
                             
@@ -106,7 +100,7 @@ while game_running:
 
 
 #drawing
-    map_stuff.camera.surface.blit(background,(0,0))
+    map_stuff.main_camera.surface.blit(background,(0,0))
 
     #print(sprites.player.vel)
 
@@ -130,42 +124,61 @@ while game_running:
 
 
 
+    map_stuff.main_camera.surface.blit(sprites.player.surface, (sprites.player.pos))
 
-
-    map_stuff.camera.surface.blit(sprites.player.surface, (sprites.player.pos))
+    #map_mode_button
     if ui.map_mode_button.pressed:
         map_stuff.map_maker.map_mode()
 
         for i in range(map_stuff.map_size[0]//16):
-            pygame.draw.line(map_stuff.camera.surface,(200,200,200),(i*16,0),(i*16,map_stuff.map_size[1]))
+            pygame.draw.line(map_stuff.main_camera.surface,(200,200,200),(i*16,0),(i*16,map_stuff.map_size[1]))
         for i in range(map_stuff.map_size[1]//16):
-            pygame.draw.line(map_stuff.camera.surface,(200,200,200),(0,i*16),(map_stuff.map_size[0],i*16))
+            pygame.draw.line(map_stuff.main_camera.surface,(200,200,200),(0,i*16),(map_stuff.map_size[0],i*16))
 
-    for collider_obj in map_stuff.map_objects:
-        map_stuff.camera.surface.blit(collider_obj.surface,collider_obj.pos)
-        collisions.collision(sprites.player,collider_obj)
+    #for collider_obj in map_stuff.map_objects:
+    #    map_stuff.main_camera.surface.blit(collider_obj.surface,collider_obj.pos)
+    #    collisions.collision(sprites.player,collider_obj)
+    #map_stuff.main_camera.surface.blit(map_stuff.spike1.surface,map_stuff.spike1.pos)
+    #map_stuff.spike1.update()
+    #
 
-   
-     
     #crumble
     if sprites.crumble.collided_top:
         sprites.crumble.crumble()
     if not sprites.crumble.crumbled:
         collisions.collision(sprites.player,sprites.crumble)
-        map_stuff.camera.surface.blit(sprites.crumble.surface,sprites.crumble.pos)
-    collisions.check_colliding()
-    vars.screen.blit(map_stuff.camera.surface,(0,0),map_stuff.camera.display_part)
+        map_stuff.main_camera.surface.blit(sprites.crumble.surface,sprites.crumble.pos)
+
+   
+
+
+    for obj in map_stuff.main_camera.curr_room.objs:
+        collisions.collision(sprites.player,obj)
+        map_stuff.main_camera.surface.blit(obj.surface,obj.pos)
+
+    for spike in map_stuff.main_camera.curr_room.spikes:
+        map_stuff.main_camera.surface.blit(spike.surface,spike.pos)
+        spike.update()
+
+    for loader in map_stuff.main_camera.curr_room.loaders:
+        map_stuff.main_camera.surface.blit(loader.surface,loader.pos)
+        loader.check_overlap()
+
+    collisions.check_colliding(sprites.player)
+    vars.screen.blit(map_stuff.main_camera.surface,(0,0),map_stuff.main_camera.display_part)
+
 
     sprites.player.update_movement()
-    sprites.player.air_res()
-    sprites.player.gravity()
+
 
     #print(sprites.player.colliding_left,sprites.player.colliding_right,sprites.player.colliding_top,sprites.player.colliding_bottom,sprites.player.vel_direction)
     #print(sprites.player.pos,sprites.player.vel,sprites.player.accel)
 
-    ui.test_button.run_button()
-    ui.debug_button.run_button()
-    ui.map_mode_button.run_button()
+    for button in ui.buttons:
+        button.run_button()
+    if ui.map_mode_button.pressed:
+        ui.run_map_subbuttons()
+
 
 
     pygame.display.update(pygame.Rect((0,0),vars.resolution))    

@@ -9,3 +9,5 @@ screen = pygame.display.set_mode((resolution),pygame.SCALED,vsync=1,)
 margin = 5
 dt = 1
 making_obj = False
+events = None
+keys_pressed = None

@@ -1,7 +1,7 @@
 import pygame
 import vars
-
-
+from collisions import overlapping
+from pathlib import Path
 dash_speed = 500
 root_2 = 2**(1/2)
 def center(size,pos):
@@ -16,13 +16,14 @@ def sign(num):
     if num < 0 :return-1
     if num == 0:return 0
 
+
 class sprite:
-    def __init__(self,pos,size,texture_name,vel = (0,0), accel = (0,0)):
+    def __init__(self,pos,size,texture_name):
         self.pos = pos
-        self.vel = vel
-        self.accel = accel
+        self.vel = (0,0)
+        self.accel = (0,0)
         self.size = size
-        self.surface = pygame.transform.scale(pygame.image.load(texture_name),size)
+        self.surface = pygame.transform.scale(pygame.image.load(Path.cwd()/'assets'/texture_name),size)
         self.rect = pygame.Rect(pos,size)
         self.colliding_left = False
         self.colliding_right = False
@@ -107,10 +108,10 @@ class sprite:
 
 
 class Player(sprite):
-    def __init__(self, pos, size, texture_name, vel=(0, 0), accel=(0, 0),input_direction = (0,0),vel_direction = (0,0)):
-        super().__init__(pos, size, texture_name, vel, accel)
-        self.input_direction = input_direction
-        self.vel_direction = vel_direction
+    def __init__(self, pos, size, texture_name):
+        super().__init__(pos, size, texture_name)
+        self.input_direction = (0,0)
+        self.vel_direction = (0,0)
         self.dash_cooldown_time = 0
         self.left_colliding = []
         self.right_colliding = []
@@ -120,6 +121,7 @@ class Player(sprite):
         self.colliding_right = False
         self.colliding_top = False
         self.colliding_bottom = False
+        self.respawn_point = pos
     @property
     def input_direction(self):
         return (self.input_directionx,self.input_directiony)
@@ -138,56 +140,23 @@ class Player(sprite):
         self.accelx += 500
     
     def jump(self):
-        if self.collided_bottom:
-            self.vel = -500
+        if self.colliding_bottom:
+            self.vely = -500
             self.collided_bottom = False
         else:
-            self.accely += -500
-
+            self.accely += -700
+    
     def fast_fall(self):
         self.accely +=500
-    '''
-    def movement(self):
-        keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[pygame.K_UP] and keys_pressed[pygame.K_DOWN]:
-            pass
-        elif keys_pressed[pygame.K_UP]:
-            self.input_directiony = -1
-            if not self.colliding_top:
-                self.jump()
-            
 
-        elif keys_pressed[pygame.K_DOWN]:
-            self.input_directiony = 1
-            if not self.colliding_bottom:
-                self.accely = 500 
-            
-
-        else:
-            self.accely = 0
-            self.input_directiony = 0
-
-
-        #movement y
-        if keys_pressed[pygame.K_LEFT] and keys_pressed[pygame.K_RIGHT]:
-            self.accelx = 0
-        elif keys_pressed[pygame.K_LEFT]:
-            self.input_directionx = -1
-            if not self.colliding_right:
-                self.accelx = -500
-
-        elif keys_pressed[pygame.K_RIGHT] :   
-            self.input_directionx = 1
-            if not self.colliding_left:
-                self.accelx = 500 
-
-        else:
-            self.accelx = 0
-            self.input_directionx = 0
-    '''
-    
-
-    
+    def friction(self):
+        
+        if self.colliding_bottom:
+            if self.input_directionx != self.vel_directionx:
+                if abs(self.velx) < 1:
+                    self.velx = 0
+                else:
+                    self.velx *= 0.8
     def on_wall(self): 
         pass
 
@@ -197,9 +166,10 @@ class Player(sprite):
 
     def gravity(self):
         if not self.colliding_bottom:
-            self.vely += 1000*vars.dt     
+            self.vely += 1500*vars.dt     
 
     def update_movement(self):
+        self.friction()
         self.velx += self.accelx*vars.dt
         self.vely += self.accely*vars.dt
         self.accel = (0,0)
@@ -215,18 +185,14 @@ class Player(sprite):
         
         if self.dash_cooldown_time <2:
             self.dash_cooldown_time += vars.dt
-    def jump(self):
-        if self.collided_bottom:
-            self.vely = -500
-            self.vel_directiony = -1
-            self.collided_bottom = False #currently nothings happening
-        else: 
-            self.accely = -380
+        self.air_res()
+        self.gravity()
+
 
            
 
     def dash(self):
-        if self.dash_cooldown_time > 1:
+        if self.dash_cooldown_time > 0.5:
             if (self.input_directionx !=0 and 
                 self.input_directiony !=0):
                 if self.input_directionx != 0: ########fix repeated sadgiuysauldgaliusdaguliagdauidagsldaguisdiguasdlugigaulsdugiuasdggulid
@@ -260,14 +226,21 @@ class Player(sprite):
         self.dash_cooldown_time = 0
 
     def create_crumble(self,crumble_block):
-        crumble_block.center = [x+y for x,y in zip(self.center,[direction*200 for direction in self.input_direction])]
+        crumble_block.center = [x+y for x,y in zip(self.center,[direction*150 for direction in self.input_direction])]
         crumble_block.crumbled = False
         crumble_block.crumble_cooldown_time = 0
         crumble_block.crumbling = False
         crumble_block.collided_top = False
+
+    def death_animation(self):
+        ...
+    def die(self):
+        self.death_animation()
+        self.pos = self.respawn_point
+        
 class crumble_block(sprite):
-    def __init__(self, pos, size, texture_name, vel=(0, 0), accel=(0, 0)):
-        super().__init__(pos, size, texture_name, vel, accel)
+    def __init__(self, pos, size, texture_name):
+        super().__init__(pos, size, texture_name)
         self.crumble_time = 1
         self.crumble_cooldown_time = 0
         self.crumbled = False
@@ -289,14 +262,11 @@ class crumble_block(sprite):
     def update_crumble(self):
         self.crumble_cooldown_time += vars.dt
 
-class spike(sprite):
-    def __init__(self, pos, size, texture_name, vel=(0, 0), accel=(0, 0)):
-        super().__init__(pos, size, texture_name, vel, accel)
 
 crumble = crumble_block((1536, 1040),(112, 16),'boxplayer.webp')
-player = Player((800,500),(100,100),'boxplayer.webp')
+player = Player((800,500),(64,64),'boxplayer.webp')
 
-    
+
 
 
 

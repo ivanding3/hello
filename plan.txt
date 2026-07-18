@@ -1,12 +1,21 @@
 #menu screen still not done
 #hitboxes for map mkaing
-#implement mechanics ****
+#implement mechanics ###done i think
 #create some gameplay
 #needs last input direction
-#last created shape is sticky from the left and right??
 #coyote time
 #needs util counter
-#seperate movement method into seperate methods
-#margin  needs fixing
+#blit only the area with the player / moving objs only if too much lag
 
-#collisions rework
+
+#collisions need to go from closest to farthest since when it goes in order it tps the player 
+to the surface of the first shape it checks which can cause the player to tp through shapes
+
+
+#create json and for each room have a list of spikes,objs,and loaders****current task
+# dict will have a dict of rooms and each room will be a dict for each list
+
+#dict is just the class objects but the json is how to make everything
+
+
+#update that calls updates and order them correctly
