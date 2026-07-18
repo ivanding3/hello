@@ -1,1 +1,52 @@
-{"(0, 0)": {"room": 
+{
+  "(0, 0)": {
+    "room": {
+      "size": [
+        3200,
+        1600
+      ],
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          1600
+        ],
+        "size": [
+          1600,
+          160
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          928,
+          1344
+        ],
+        "size": [
+          240,
+          112
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          560,
+          1312
+        ],
+        "size": [
+          144,
+          80
+        ],
+        "texture_name": "boxplayer.webp"
+      }
+    ],
+    "loaders": []
+  }
+}

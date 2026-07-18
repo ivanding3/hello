@@ -4,7 +4,7 @@ import collisions
 import vars
 import ui
 import json
-
+import copy
 #map data idk
 #grid size 16 px
 
@@ -15,27 +15,6 @@ map_objects = []
 
 
 
-'''
-with open('map_objs.json','w') as f:
-            json.dump(map_objs,f)
-
-with open('map_objs.json','r') as f:
-    map_objs = json.load(f)
-'''
-'''
-room = {
-    'room' : size,room_pos
-    'spikes': [spikeobj1,spikeobj2],
-    'objs': [...],
-    'loaders': [...],
-
-}
-map_objs = {
-    'room': room,
-    'room_2':room_2_objs,
-    
-}
-'''
 class Room():
     def __init__(self,size,room_pos):
         self.size = size
@@ -46,8 +25,8 @@ class Room():
         self.loaders = []
         self.room = {
             'room' : [],
-            'spikes': [],
             'objs': [],
+            'spikes': [],
             'loaders': [],
             }
 
@@ -74,7 +53,7 @@ class Room():
         for loader in self.loaders:
             loader.check_overlap()
 
-room_0 = Room((map_size),(0, 0))
+
 map_objs = {
     '(0, 0)': {
             'room' : Room((map_size),(0, 0)),
@@ -242,6 +221,32 @@ class Map_maker():
     def __init__(self):
         self.creating = False
         self.curr_room = map_objs[main_camera.room_key]['room']
+
+    def save_map(self):
+        with open('map_objs.json','w') as f:
+            json.dump(map_objs_to_json(),f,indent= 2)
+    
+    def load_map(self):
+        with open('map_objs.json','r') as f:
+            a_dict = json.load(f)
+            for key in a_dict:
+                map_objs[key]['room'] = Room(a_dict[key]['room']['size'],str_to_tuple(key))
+
+                objs = []
+                for obj in a_dict[key]['objs']:
+                    objs.append(sprites.sprite(obj['pos'],obj['size'],obj['texture_name']))
+                map_objs[key]['objs'] = objs
+
+                spikes = []
+                for spike in a_dict[key]['spikes']:
+                    spikes.append(Spike(spike['pos'],spike['size'],spike['texture_name']))
+                map_objs[key]['spikes'] = spikes
+
+                loaders = []
+                for loader in a_dict[key]['loaders']:
+                    loaders.append(loading_zone(loader['pos'],loader['size'],loader['room_size'],loader['room_pos'],loader['texture_name']))
+                map_objs[key]['loaders'] = loaders
+
     def find_curr_room(self):
         self.curr_room = map_objs[main_camera.room_key]['room']
     
@@ -285,6 +290,7 @@ class Map_maker():
         if self.obj_type == 'loader':
             map_objs[main_camera.room_key]['loaders'].append(loading_zone((self.init),snap_to_grid(self.size),main_camera.curr_room))
         self.curr_room.update_room_objs()
+        self.save_map()
 
 
     def map_mode(self):
@@ -299,26 +305,28 @@ class Map_maker():
             self.display_ghost()
 
 map_maker = Map_maker()  
-spike1 = Spike((0,1600),(1600,160),'boxplayer.webp')
 
+def map_objs_to_json():
+    dict_copy = {}
+    for key in map_objs:
+        dict_copy.setdefault(key,{})
 
-    
-    
+        room = {'size':map_objs[key]['room'].size,'pos':str_to_tuple(key)}
+        dict_copy[key].setdefault('room',room)
 
+        objs = []
+        for obj in map_objs[key]['objs']:
+            objs.append({'pos':obj.pos,'size':obj.size,'texture_name':'Green.webp'})
+        dict_copy[key].setdefault('objs',objs)
 
-         
+        spikes = []
+        for spike in map_objs[key]['spikes']:
+            spikes.append({'pos':spike.pos,'size':spike.size,'texture_name':'boxplayer.webp'})
+        dict_copy[key].setdefault('spikes',spikes)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        loaders = []
+        for loader in map_objs[key]['loaders']:
+            loaders.append({'pos':loader.pos,'size':loader.size,'room_size':loader.room.size,
+                            'room_pos':loader.room.pos,'texture_name':'Green.webp'})
+        dict_copy[key].setdefault('loaders',loaders)
+    return(dict_copy)

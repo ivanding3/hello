@@ -22,7 +22,9 @@ file_len = 0
 pygame.event.set_blocked(pygame.MOUSEMOTION)
 
 frame = 0
+map_stuff.map_maker.load_map()
 map_stuff.main_camera.curr_room.update_room_objs()
+
 
 game_running = True
 while game_running:
@@ -120,7 +122,7 @@ while game_running:
                 map_stuff.map_objects.append(sprites.sprite(pos,size,img))                                               
                                                                
                 
-    print(map_stuff.main_camera.pos)        
+    
 
 
 
@@ -183,3 +185,5 @@ while game_running:
     pygame.display.update(pygame.Rect((0,0),vars.resolution))    
     vars.dt = clock.tick(75)/1000
     #print(sprites.player.accel,sprites.player.vel,sprites.player.pos)
+    
+    
