@@ -1,8 +1,10 @@
 import pygame
 import vars
-from collisions import overlapping
 from pathlib import Path
-dash_speed = 500
+
+dash_speed = 700
+dash_cd = 0.3
+move_speed = 1000
 root_2 = 2**(1/2)
 def center(size,pos):
     width = size[0]
@@ -104,7 +106,18 @@ class sprite:
     @centery.setter
     def centery(self,val):
         self.y = val-self.height/2
-
+    @property
+    def midtop(self):
+        return (self.x+self.width/2,self.y)
+    @midtop.setter
+    def midtop(self,tuple):
+        (self.x,self.y)= (tuple[0]-self.width/2,tuple[1])
+    @property
+    def midbottom(self):
+        return (self.x+self.width/2,self.y+self.height)
+    @midbottom.setter
+    def midbottom(self,tuple):
+        (self.x,self.y)= (tuple[0]-self.width/2,tuple[1]+self.height)
 
 
 class Player(sprite):
@@ -113,6 +126,7 @@ class Player(sprite):
         self.input_direction = (0,0)
         self.vel_direction = (0,0)
         self.dash_cooldown_time = 0
+        self.gravity_enabled = True
         self.left_colliding = []
         self.right_colliding = []
         self.top_colliding = []
@@ -121,7 +135,19 @@ class Player(sprite):
         self.colliding_right = False
         self.colliding_top = False
         self.colliding_bottom = False
+        self.overlapping = False
         self.respawn_point = pos
+        self.utils = 3
+        self.in_dash = False
+        self.dashx = 0
+        self.dashy = 0
+        self.facing = 1
+    @property
+    def respawn_point(self):
+        return (self.respawn_x,self.respawn_y)
+    @respawn_point.setter
+    def respawn_point(self,tuple):
+        (self.respawn_x,self.respawn_y) = tuple
     @property
     def input_direction(self):
         return (self.input_directionx,self.input_directiony)
@@ -135,109 +161,153 @@ class Player(sprite):
         self.bottom_colliding = []
 
     def move_left(self):
-        self.accelx += -500
+        self.accelx += -move_speed
     def move_right(self):
-        self.accelx += 500
+        self.accelx += move_speed
     
     def jump(self):
         if self.colliding_bottom:
-            self.vely = -500
+            self.vely = -700
             self.collided_bottom = False
         else:
             self.accely += -700
     
     def fast_fall(self):
-        self.accely +=500
+        self.accely +=move_speed
 
     def friction(self):
-        
         if self.colliding_bottom:
             if self.input_directionx != self.vel_directionx:
                 if abs(self.velx) < 1:
                     self.velx = 0
                 else:
-                    self.velx *= 0.8
+                    self.velx -= 5*self.velx*vars.dt
     def on_wall(self): 
         pass
 
 
     def air_res(self):
-        self.vel = [vel-vel*vars.dt*0.5 for vel in self.vel]
+        return
+        self.vel = self.velx-self.vel_directionx*(vars.dt*1000),self.vely-self.vel_directiony*(vars.dt*100)
+        
 
     def gravity(self):
         if not self.colliding_bottom:
             self.vely += 1500*vars.dt     
-
+    def collided(self):
+        if (self.colliding_left or 
+            self.colliding_right or 
+            self.colliding_top or 
+            self.colliding_bottom):
+            return True
+         
     def update_movement(self):
         self.friction()
         self.velx += self.accelx*vars.dt
+        self.velx -= 1*self.velx*vars.dt#friction
         self.vely += self.accely*vars.dt
+        if self.vel_directiony == -1:
+            self.vely -= 1*self.vely*vars.dt
+        self.air_res()
         self.accel = (0,0)
         self.vel_direction = tuple(map(sign,self.vel))
+        if self.in_dash:
+            self.accel = (0,0)
+            self.vel = self.dashx,self.dashy
         if (self.colliding_left and self.vel_directionx == -1 or
             self.colliding_right and self.vel_directionx == 1):
             self.velx = 0
+            self.in_dash = False
         if (self.colliding_top and self.vel_directiony == -1 or
             self.colliding_bottom and self.vel_directiony == 1):
             self.vely = 0
+            self.in_dash = False
+        if self.overlapping:
+            self.in_dash = False
+
+
         self.x += self.velx*vars.dt
         self.y += self.vely*vars.dt
-        
-        if self.dash_cooldown_time <2:
+        if self.dash_cooldown_time < dash_cd:
             self.dash_cooldown_time += vars.dt
-        self.air_res()
-        self.gravity()
+        else:self.in_dash = False    
+        if self.gravity_enabled:
+            self.gravity()
 
 
            
 
     def dash(self):
-        if self.dash_cooldown_time > 0.5:
+        
+        if self.dash_cooldown_time > dash_cd and self.utils > 0:
+            init_velx = self.velx
+            init_vely = self.vely
+            self.in_dash = True
+            if self.input_direction == (0, 0):
+                self.dashy = 0
+                if sign(init_velx) != self.facing*-1:
+                    self.dashx = init_velx + dash_speed*self.facing
+                else:
+                    self.dashx = dash_speed*self.facing
+            else:
+                if self.input_directionx == 0 : 
+                    self.dashx = 0
+                elif self.input_directiony == 0:
+                    self.dashy = 0
             if (self.input_directionx !=0 and 
                 self.input_directiony !=0):
-                if self.input_directionx != 0: ########fix repeated sadgiuysauldgaliusdaguliagdauidagsldaguisdiguasdlugigaulsdugiuasdggulid
-                    if sign(self.velx) == self.input_directionx:
-                        self.velx += 500/root_2*self.input_directionx
+                    if sign(init_velx) != self.input_directionx*-1:
+                        self.dashx = init_velx + dash_speed/root_2*self.input_directionx
                     else:
-                        self.velx = 500/root_2*self.input_directionx
-                if self.input_directiony != 0:
-                    if sign(self.vely) == self.input_directiony:
-                        self.vely += 500/root_2*self.input_directiony
+                        self.dashx = dash_speed/root_2*self.input_directionx
+
+                    if sign(init_vely) != self.input_directiony*-1:
+                        self.dashy = init_vely+dash_speed/root_2*self.input_directiony
                     else:
-                        self.vely = 500/root_2*self.input_directiony
+                        self.dashy = dash_speed/root_2*self.input_directiony
             else: 
                 if self.input_directionx != 0:
-                    if sign(self.velx) == self.input_directionx:
-                        self.velx += 500*self.input_directionx
+                    if sign(init_velx) != self.input_directionx*-1:
+                        self.dashx = init_velx + dash_speed*self.input_directionx
                     else:
-                        self.velx = 500*self.input_directionx
-                else:
-                    self.velx = 500*self.input_directionx
+                        self.dashx = dash_speed*self.input_directionx
                 if self.input_directiony != 0:
-                    if sign(self.vely) == self.input_directiony:
-                        self.vely += 500*self.input_directiony
+                    if sign(init_vely) != self.input_directiony*-1:
+                        self.dashy =  init_vely + dash_speed*self.input_directiony
                     else:
-                        self.vely = 500*self.input_directiony
-                else:
-                    self.vely = 500*self.input_directiony
-            self.dash_cooldown()
+                         self.dashy = dash_speed*self.input_directiony
 
-    def dash_cooldown(self):
-        self.dash_cooldown_time = 0
+
+
+            self.utils -= 1
+            self.dash_cooldown_time = 0.0
+        
 
     def create_crumble(self,crumble_block):
-        crumble_block.center = [x+y for x,y in zip(self.center,[direction*150 for direction in self.input_direction])]
-        crumble_block.crumbled = False
-        crumble_block.crumble_cooldown_time = 0
-        crumble_block.crumbling = False
-        crumble_block.collided_top = False
+        if self.utils > 0:
+            if self.input_direction != (0,0):
+                crumble_block.center = (self.centerx + self.input_directionx*200,
+                                        self.centery + self.input_directiony*200)
+            else:
+                crumble_block.center = (self.centerx + self.facing*200,
+                                        self.centery + self.input_directiony*200)
+            crumble_block.crumbled = False
+            crumble_block.crumble_cooldown_time = 0
+            crumble_block.crumbling = False
+            crumble_block.collided_top = False
+            self.utils -= 1
+
+    def reset_util(self):
+        self.utils = 3
 
     def death_animation(self):
         ...
     def die(self):
         self.death_animation()
+        self.accel = (0,0)
+        self.vel = (0,0)
         self.pos = self.respawn_point
-        
+        self.in_dash = False
 class crumble_block(sprite):
     def __init__(self, pos, size, texture_name):
         super().__init__(pos, size, texture_name)
@@ -263,7 +333,7 @@ class crumble_block(sprite):
         self.crumble_cooldown_time += vars.dt
 
 
-crumble = crumble_block((1536, 1040),(112, 16),'boxplayer.webp')
+crumble = crumble_block((-1000, 1040),(160, 160),'boxplayer.webp')
 player = Player((800,500),(64,64),'boxplayer.webp')
 
 

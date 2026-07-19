@@ -1,5 +1,5 @@
 import vars
-
+import sprites
 
 
 def overlapping(obj_1,obj_2,):
@@ -30,9 +30,9 @@ def sort_closest(dists):
     
 def collision_left(obj,static_obj):
     if (obj.vel_directionx != 1 and
-        obj.bottom > static_obj.top and 
+        obj.bottom > static_obj.top+16 and 
         obj.top < static_obj.bottom and
-        obj.left >= static_obj.right and
+        obj.left >= static_obj.right - 32 and
         obj.left + obj.velx*vars.dt <= static_obj.right):
             obj.collided_left = True
             static_obj.collided_right = True
@@ -41,9 +41,9 @@ def collision_left(obj,static_obj):
 
 def collision_right(obj,static_obj):
     if (obj.vel_directionx != -1 and
-        obj.bottom > static_obj.top and 
+        obj.bottom > static_obj.top+16 and 
         obj.top < static_obj.bottom and
-        obj.right <= static_obj.left and
+        obj.right <= static_obj.left + 32 and
         obj.right + obj.velx*vars.dt >= static_obj.left):
             obj.collided_right = True
             static_obj.collided_left = True
@@ -54,7 +54,7 @@ def collision_top(obj,static_obj):
     if (obj.vel_directiony != 1 and
         obj.right > static_obj.left and 
         obj.left < static_obj.right and
-        obj.top >= static_obj.bottom and
+        obj.top >= static_obj.centery and
         obj.top + obj.vely*vars.dt <= static_obj.bottom):
             obj.collided_top = True
             static_obj.collided_bottom = True
@@ -65,12 +65,14 @@ def collision_bottom(obj,static_obj):
     if (obj.vel_directiony != -1 and
         obj.right > static_obj.left and 
         obj.left < static_obj.right and
-        obj.bottom <= static_obj.top and
+        obj.bottom <= static_obj.centery and
         obj.bottom + obj.vely*vars.dt >= static_obj.top):
             obj.collided_bottom = True
             static_obj.collided_top = True
             obj.bottom = static_obj.top
             obj.bottom_colliding.append(static_obj)
+            if not isinstance(static_obj, sprites.crumble_block):
+                obj.reset_util()
 
 def collision(obj,static_obj):
     collision_left(obj,static_obj)

@@ -35,8 +35,7 @@ while game_running:
     if margin>5:
         vars.margin = margin
     
-    
-    
+    #print(map_stuff.map_objs)
     #print(f'fps = {1/vars.dt}')
 
     #print(player.vel,player.accel,dt)
@@ -44,7 +43,7 @@ while game_running:
     
 
     map_stuff.main_camera.follow_player()
-
+    map_stuff.main_camera.stay_in_room()
     #camera
 
     
@@ -54,11 +53,12 @@ while game_running:
     #inputs
     for event in vars.events:
         if event.type == pygame.QUIT:
+            map_stuff.map_objs_to_json()
             pygame.quit()
             exit()
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 2:
             if ui.debug_button.pressed:
-                print(sprites.player.pos)
+                sprites.player.gravity_enabled = False
                 sprites.player.pos = (pygame.mouse.get_pos()[0] - map_stuff.main_camera.x,
                                         pygame.mouse.get_pos()[1] - map_stuff.main_camera.y)
 
@@ -68,8 +68,10 @@ while game_running:
             if event.key == pygame.K_z:
                 sprites.player.create_crumble(sprites.crumble)
             
-     
-
+    if ui.debug_button.pressed:
+        sprites.player.gravity_enabled = False     
+        sprites.player.utils = 10
+    else:sprites.player.gravity_enabled = True
     if vars.keys_pressed[pygame.K_c]:
         sprites.player.jump()
 
@@ -79,10 +81,12 @@ while game_running:
     else:
         if vars.keys_pressed[pygame.K_LEFT]:
             sprites.player.input_directionx = -1
-            sprites.player.move_left()                
+            sprites.player.move_left()        
+            sprites.player.facing = -1        
         elif vars.keys_pressed[pygame.K_RIGHT]:
             sprites.player.input_directionx = 1
             sprites.player.move_right()
+            sprites.player.facing = 1
         else:
             sprites.player.input_directionx = 0
 
@@ -108,19 +112,7 @@ while game_running:
     #print(sprites.player.vel)
 
     # inefficient
-    with open('map_objs.txt','r') as f:
-        f = f.readlines()
-        if len(f)> file_len:
-            map_stuff.map_objects.clear()
-            file_len = 0
-            for line in f:
-                data = line.split('/')
-                pos = tuple(map(int,data[0].replace('(','').replace(')','').split(',')))     
-                size = tuple(map(int,data[1].replace('(','').replace(')','').split(',')))
-                img = data[2]
-                file_len += 1
-                map_stuff.map_objects.append(sprites.sprite(pos,size,img))                                               
-                                                               
+
                 
     
 
@@ -132,7 +124,9 @@ while game_running:
     #map_mode_button
     if ui.map_mode_button.pressed:
         map_stuff.map_maker.map_mode()
-
+        for event in vars.events:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
+                map_stuff.map_maker.del_obj()
         for i in range(map_stuff.map_size[0]//16):
             pygame.draw.line(map_stuff.main_camera.surface,(200,200,200),(i*16,0),(i*16,map_stuff.map_size[1]))
         for i in range(map_stuff.map_size[1]//16):
@@ -157,6 +151,10 @@ while game_running:
 
     for obj in map_stuff.main_camera.curr_room.objs:
         collisions.collision(sprites.player,obj)
+        if collisions.overlapping(sprites.player,obj):
+            sprites.player.overlapping = True
+        else:
+            sprites.player.overlapping = False
         map_stuff.main_camera.surface.blit(obj.surface,obj.pos)
 
     for spike in map_stuff.main_camera.curr_room.spikes:
