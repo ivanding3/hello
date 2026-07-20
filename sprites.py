@@ -2,10 +2,11 @@ import pygame
 import vars
 from pathlib import Path
 
-dash_speed = 700
-dash_cd = 0.3
-move_speed = 1000
+dash_speed = 500
+dash_cd = 0.2
+move_speed = 500
 root_2 = 2**(1/2)
+
 def center(size,pos):
     width = size[0]
     height = size[1]
@@ -162,7 +163,7 @@ class Player(sprite):
 
     def move_left(self):
         self.accelx += -move_speed
-    def move_right(self):
+    def move_right(self): 
         self.accelx += move_speed
     
     def jump(self):
@@ -170,7 +171,7 @@ class Player(sprite):
             self.vely = -700
             self.collided_bottom = False
         else:
-            self.accely += -700
+            self.accely = -700
     
     def fast_fall(self):
         self.accely +=move_speed
@@ -181,14 +182,14 @@ class Player(sprite):
                 if abs(self.velx) < 1:
                     self.velx = 0
                 else:
-                    self.velx -= 5*self.velx*vars.dt
+                    self.velx -= 10*self.velx*vars.dt
     def on_wall(self): 
         pass
 
 
     def air_res(self):
-        return
-        self.vel = self.velx-self.vel_directionx*(vars.dt*1000),self.vely-self.vel_directiony*(vars.dt*100)
+        if self.input_directionx != self.vel_directionx and not self.colliding_bottom:
+            self.velx -= 7*self.velx*vars.dt
         
 
     def gravity(self):
@@ -228,9 +229,10 @@ class Player(sprite):
 
         self.x += self.velx*vars.dt
         self.y += self.vely*vars.dt
-        if self.dash_cooldown_time < dash_cd:
+        if self.dash_cooldown_time < dash_cd +1:
             self.dash_cooldown_time += vars.dt
-        else:self.in_dash = False    
+        if self.dash_cooldown_time >= dash_cd:
+            self.in_dash = False    
         if self.gravity_enabled:
             self.gravity()
 

@@ -153,12 +153,12 @@
           0
         ],
         "size": [
-          512,
+          768,
           64
         ],
         "room_size": [
-          6400,
-          3200
+          3200,
+          1600
         ],
         "room_pos": [
           0,
@@ -179,8 +179,492 @@
         1
       ]
     },
-    "objs": [],
+    "objs": [
+      {
+        "pos": [
+          224,
+          3152
+        ],
+        "size": [
+          208,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          3136
+        ],
+        "size": [
+          352,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          432,
+          3136
+        ],
+        "size": [
+          240,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          2640
+        ],
+        "size": [
+          64,
+          496
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          672,
+          2832
+        ],
+        "size": [
+          176,
+          368
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2656,
+          2816
+        ],
+        "size": [
+          64,
+          144
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2720,
+          2896
+        ],
+        "size": [
+          416,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2992,
+          2640
+        ],
+        "size": [
+          800,
+          112
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          3808,
+          2896
+        ],
+        "size": [
+          96,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2992,
+          2432
+        ],
+        "size": [
+          80,
+          208
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          3152,
+          2544
+        ],
+        "size": [
+          48,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2992,
+          2368
+        ],
+        "size": [
+          1024,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          3904,
+          2448
+        ],
+        "size": [
+          112,
+          512
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          848,
+          2912
+        ],
+        "size": [
+          1824,
+          320
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1568,
+          2816
+        ],
+        "size": [
+          1120,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2672,
+          2960
+        ],
+        "size": [
+          736,
+          240
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          3408,
+          3072
+        ],
+        "size": [
+          768,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          2224
+        ],
+        "size": [
+          64,
+          416
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          2224
+        ],
+        "size": [
+          64,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          1696
+        ],
+        "size": [
+          4016,
+          672
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          4656,
+          3072
+        ],
+        "size": [
+          176,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          5184,
+          3072
+        ],
+        "size": [
+          176,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          6176,
+          3072
+        ],
+        "size": [
+          224,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1888,
+          2672
+        ],
+        "size": [
+          832,
+          144
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          848,
+          2848
+        ],
+        "size": [
+          720,
+          64
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          2896,
+          2368
+        ],
+        "size": [
+          96,
+          448
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          2720,
+          2688
+        ],
+        "size": [
+          48,
+          208
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          3136,
+          2912
+        ],
+        "size": [
+          272,
+          48
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          3536,
+          2912
+        ],
+        "size": [
+          272,
+          48
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          4416,
+          2848
+        ],
+        "size": [
+          96,
+          352
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          4960,
+          2848
+        ],
+        "size": [
+          96,
+          352
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          5360,
+          3120
+        ],
+        "size": [
+          400,
+          48
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          1568,
+          2736
+        ],
+        "size": [
+          320,
+          80
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          880,
+          2784
+        ],
+        "size": [
+          272,
+          64
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          1376,
+          2784
+        ],
+        "size": [
+          192,
+          64
+        ],
+        "texture_name": "boxplayer.webp"
+      },
+      {
+        "pos": [
+          5360,
+          3168
+        ],
+        "size": [
+          816,
+          32
+        ],
+        "texture_name": "boxplayer.webp"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          208,
+          3152
+        ],
+        "size": [
+          224,
+          48
+        ],
+        "room_size": [
+          6400,
+          3200
+        ],
+        "room_pos": [
+          0,
+          1
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          6320,
+          2928
+        ],
+        "size": [
+          80,
+          144
+        ],
+        "room_size": [
+          6400,
+          3200
+        ],
+        "room_pos": [
+          0,
+          1
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(1, 1)": {
+    "room": {
+      "size": [
+        1920,
+        1080
+      ],
+      "pos": [
+        1,
+        1
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          208
+        ],
+        "size": [
+          352,
+          96
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
     "spikes": [],
-    "loaders": []
+    "loaders": [
+      {
+        "pos": [
+          0,
+          48
+        ],
+        "size": [
+          80,
+          160
+        ],
+        "room_size": [
+          1920,
+          1080
+        ],
+        "room_pos": [
+          1,
+          1
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
   }
 }

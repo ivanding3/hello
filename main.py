@@ -6,15 +6,14 @@ import collisions
 import map_stuff 
 import vars 
 import json
-from pathlib import Path
+
 
 
 
 #collisions rework
 clock = pygame.time.Clock()
 pygame.display.init()
-background = pygame.transform.scale(pygame.image.load(Path.cwd()/'assets'/'BG image.png'),(map_stuff.map_size))
-background = pygame.Surface.convert(background)
+
 file_len = 0
 
 
@@ -22,7 +21,11 @@ file_len = 0
 pygame.event.set_blocked(pygame.MOUSEMOTION)
 
 frame = 0
+
 map_stuff.map_maker.load_map()
+for key in map_stuff.map_objs:
+    for loader in map_stuff.map_objs[key]['loaders']:
+        loader.init_loaders()
 map_stuff.main_camera.curr_room.update_room_objs()
 
 
@@ -107,7 +110,7 @@ while game_running:
 
 
 #drawing
-    map_stuff.main_camera.surface.blit(background,(0,0))
+    map_stuff.main_camera.surface.blit(map_stuff.main_camera.background,(0,0))
 
     #print(sprites.player.vel)
 
@@ -162,6 +165,7 @@ while game_running:
         spike.update()
 
     for loader in map_stuff.main_camera.curr_room.loaders:
+        loader.init_loaders()
         map_stuff.main_camera.surface.blit(loader.surface,loader.pos)
         loader.check_overlap()
 
