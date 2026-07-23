@@ -16,3 +16,7 @@ This game is a python platformer that relys on pygame for rendering and input de
 
 ## AI Disclosure
 Minimal AI was used in the creation of this project. Any AI usage was to explain holes in the pygame docs (like pygame.scaled being required for VSync), or to explore other facets of the python language. 
+
+
+## Artwork
+All sprites are made by ProbablyADoor
