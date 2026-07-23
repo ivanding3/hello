@@ -13,17 +13,6 @@
     "objs": [
       {
         "pos": [
-          0,
-          1264
-        ],
-        "size": [
-          528,
-          192
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
           544,
           704
         ],
@@ -112,28 +101,6 @@
       },
       {
         "pos": [
-          0,
-          784
-        ],
-        "size": [
-          2640,
-          656
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1824,
-          0
-        ],
-        "size": [
-          816,
-          784
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
           2368,
           0
         ],
@@ -145,12 +112,23 @@
       },
       {
         "pos": [
-          2336,
+          0,
+          784
+        ],
+        "size": [
+          3200,
+          816
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1824,
           0
         ],
         "size": [
-          592,
-          944
+          1376,
+          784
         ],
         "texture_name": "Green.webp"
       }
@@ -213,17 +191,6 @@
       ]
     },
     "objs": [
-      {
-        "pos": [
-          224,
-          3152
-        ],
-        "size": [
-          208,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
       {
         "pos": [
           0,
@@ -604,12 +571,12 @@
     "loaders": [
       {
         "pos": [
-          192,
-          3152
+          6320,
+          2928
         ],
         "size": [
-          240,
-          48
+          80,
+          144
         ],
         "room_size": [
           6400,
@@ -623,12 +590,12 @@
       },
       {
         "pos": [
-          6320,
-          2928
+          176,
+          3152
         ],
         "size": [
-          80,
-          144
+          256,
+          48
         ],
         "room_size": [
           6400,
@@ -1134,11 +1101,11 @@
     "loaders": [
       {
         "pos": [
-          96,
-          0
+          784,
+          1040
         ],
         "size": [
-          368,
+          1072,
           48
         ],
         "room_size": [
@@ -1153,11 +1120,11 @@
       },
       {
         "pos": [
-          784,
-          1040
+          96,
+          0
         ],
         "size": [
-          1072,
+          368,
           48
         ],
         "room_size": [
@@ -1180,7 +1147,7 @@
       ],
       "pos": [
         3,
-        1
+        -1
       ]
     },
     "objs": [
@@ -1214,842 +1181,6 @@
         "size": [
           112,
           1056
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          128,
-          416
-        ],
-        "size": [
-          192,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          224,
-          432
-        ],
-        "size": [
-          16,
-          192
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          368,
-          496
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          384,
-          512
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          400,
-          528
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          416,
-          544
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          432,
-          528
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          448,
-          512
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          464,
-          496
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          432,
-          560
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          448,
-          576
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          464,
-          592
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          368,
-          480
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          464,
-          480
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          368,
-          464
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          464,
-          464
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          672,
-          416
-        ],
-        "size": [
-          16,
-          208
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          688,
-          416
-        ],
-        "size": [
-          112,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          688,
-          496
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          816,
-          512
-        ],
-        "size": [
-          80,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          800,
-          528
-        ],
-        "size": [
-          16,
-          80
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          816,
-          608
-        ],
-        "size": [
-          80,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          896,
-          528
-        ],
-        "size": [
-          16,
-          80
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          944,
-          512
-        ],
-        "size": [
-          16,
-          112
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          960,
-          528
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          976,
-          512
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          336,
-          656
-        ],
-        "size": [
-          16,
-          240
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          352,
-          656
-        ],
-        "size": [
-          128,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          480,
-          672
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          496,
-          688
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          496,
-          704
-        ],
-        "size": [
-          16,
-          48
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          480,
-          752
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          352,
-          768
-        ],
-        "size": [
-          128,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          528,
-          672
-        ],
-        "size": [
-          16,
-          224
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          592,
-          784
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          608,
-          768
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          656,
-          784
-        ],
-        "size": [
-          16,
-          80
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          624,
-          816
-        ],
-        "size": [
-          32,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          608,
-          816
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          592,
-          832
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          592,
-          848
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          608,
-          864
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          704,
-          768
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          720,
-          800
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          736,
-          816
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          752,
-          800
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          768,
-          768
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          736,
-          832
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          752,
-          848
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          768,
-          864
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          832,
-          800
-        ],
-        "size": [
-          16,
-          96
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          832,
-          768
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          880,
-          800
-        ],
-        "size": [
-          16,
-          96
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          768,
-          864
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          896,
-          816
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          912,
-          800
-        ],
-        "size": [
-          32,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          944,
-          816
-        ],
-        "size": [
-          16,
-          80
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1008,
-          800
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1056,
-          816
-        ],
-        "size": [
-          16,
-          112
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1008,
-          928
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          992,
-          896
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1008,
-          864
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          992,
-          816
-        ],
-        "size": [
-          16,
-          48
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1200,
-          592
-        ],
-        "size": [
-          128,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1200,
-          592
-        ],
-        "size": [
-          16,
-          176
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1200,
-          768
-        ],
-        "size": [
-          128,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1216,
-          672
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1344,
-          688
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1360,
-          720
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1408,
-          736
-        ],
-        "size": [
-          16,
-          32
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1360,
-          768
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1360,
-          672
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1456,
-          672
-        ],
-        "size": [
-          80,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1440,
-          688
-        ],
-        "size": [
-          16,
-          80
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1456,
-          768
-        ],
-        "size": [
-          80,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
-          1136,
-          400
-        ],
-        "size": [
-          16,
-          480
         ],
         "texture_name": "Green.webp"
       },
@@ -2766,17 +1897,6 @@
       },
       {
         "pos": [
-          1184,
-          208
-        ],
-        "size": [
-          48,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
           928,
           1056
         ],
@@ -3196,17 +2316,6 @@
       },
       {
         "pos": [
-          1104,
-          0
-        ],
-        "size": [
-          720,
-          16
-        ],
-        "texture_name": "Green.webp"
-      },
-      {
-        "pos": [
           1760,
           0
         ],
@@ -3246,6 +2355,28 @@
         "size": [
           160,
           272
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1088,
+          0
+        ],
+        "size": [
+          144,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1056,
+          0
+        ],
+        "size": [
+          544,
+          16
         ],
         "texture_name": "Green.webp"
       }
@@ -3321,12 +2452,12 @@
     "loaders": [
       {
         "pos": [
-          1600,
-          0
+          0,
+          912
         ],
         "size": [
-          160,
-          48
+          48,
+          144
         ],
         "room_size": [
           1920,
@@ -3340,12 +2471,12 @@
       },
       {
         "pos": [
-          0,
-          912
+          1600,
+          0
         ],
         "size": [
-          48,
-          144
+          160,
+          48
         ],
         "room_size": [
           1920,

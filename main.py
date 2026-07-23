@@ -181,8 +181,10 @@ while vars.game_running:
             map_stuff.main_camera.surface.blit(text_surface,(200,400))
         if map_stuff.main_camera.curr_room.pos ==  (1, 0):
             text_surface = pygame.font.SysFont("geistpixelregular",30).render('Z to place box in the direction of arrow key input (diagonals exist)', True, (0,0,0))
-            map_stuff.main_camera.surface.blit(text_surface,(800,150))
-
+            map_stuff.main_camera.surface.blit(text_surface,(400,150))
+        if map_stuff.main_camera.curr_room.pos ==  (3, -1):
+            text_surface = pygame.font.SysFont("geistpixelregular",60).render('Thanks for playing!', True, (0,0,0))
+            map_stuff.main_camera.surface.blit(text_surface,(800,300))
 
         vars.screen.blit(map_stuff.main_camera.surface,(0,0),map_stuff.main_camera.display_part)
 
@@ -198,11 +200,12 @@ while vars.game_running:
             
 
         ui.draw_text(f'time = {round(time,3)}',30,(99,99,99),(0,0),vars.screen)
+        ui.draw_text(f'deaths = {sprites.player.death_count}',30,(99,99,99),(vars.screen_width-200,0),vars.screen)
 
-        for button in ui.buttons:
-           button.run_button()
-        if ui.map_mode_button.pressed:
-            ui.run_map_subbuttons()
+        #for button in ui.buttons:
+        #   button.run_button()
+        #if ui.map_mode_button.pressed:
+        #    ui.run_map_subbuttons()
 
         if not sprites.player.paused:
             pygame.display.update(pygame.Rect((0,0),vars.resolution))    

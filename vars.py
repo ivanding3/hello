@@ -2,9 +2,9 @@ import pygame
 
 menu_open = False
 game_running = True
-screen_width = 1600
-screen_height = 900
-resolution = (screen_width,screen_height)
+pygame.display.init()
+resolution = pygame.display.get_desktop_sizes()[0]
+(screen_width,screen_height) = resolution
 screen = pygame.display.set_mode((resolution),pygame.SCALED,vsync=1,)
 dt = 0
 making_obj = False

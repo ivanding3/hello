@@ -99,7 +99,6 @@ class Camera(sprites.sprite):
         self.room_key = str(self.curr_room.pos)
         self.curr_room.update_room_objs()
         self.background = pygame.transform.scale(self.background,room.size)
-        print(room.room_key)
     
     def stay_in_room(self):
         if self.x > 0:
@@ -134,7 +133,7 @@ class loading_zone(sprites.sprite):
         super().__init__(pos, size, texture_name)
         self.room = room
         self.surface = pygame.Surface(size)
-        self.surface.fill((12,34,55))
+        self.surface.fill((12,34,56))
         self.surface.set_colorkey((12,34,56))
         self.linked_loader = None
         self.loader_linked = False

@@ -1,0 +1,2493 @@
+{
+  "(0, 0)": {
+    "room": {
+      "size": [
+        3200,
+        1600
+      ],
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          544,
+          704
+        ],
+        "size": [
+          528,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          704
+        ],
+        "size": [
+          544,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          64,
+          0
+        ],
+        "size": [
+          1248,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          32
+        ],
+        "size": [
+          192,
+          672
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1264,
+          704
+        ],
+        "size": [
+          144,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1664,
+          528
+        ],
+        "size": [
+          160,
+          256
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1264,
+          336
+        ],
+        "size": [
+          144,
+          96
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1664,
+          160
+        ],
+        "size": [
+          160,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2368,
+          0
+        ],
+        "size": [
+          160,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          784
+        ],
+        "size": [
+          3200,
+          816
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1824,
+          0
+        ],
+        "size": [
+          1376,
+          784
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          1072,
+          736
+        ],
+        "size": [
+          192,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1408,
+          736
+        ],
+        "size": [
+          256,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          1312,
+          0
+        ],
+        "size": [
+          864,
+          64
+        ],
+        "room_size": [
+          3200,
+          1600
+        ],
+        "room_pos": [
+          0,
+          0
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(2, 1)": {
+    "room": {
+      "size": [
+        6400,
+        3200
+      ],
+      "pos": [
+        2,
+        1
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          3136
+        ],
+        "size": [
+          352,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          432,
+          3136
+        ],
+        "size": [
+          240,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          2640
+        ],
+        "size": [
+          64,
+          496
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          672,
+          2832
+        ],
+        "size": [
+          176,
+          368
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2656,
+          2816
+        ],
+        "size": [
+          64,
+          144
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2720,
+          2896
+        ],
+        "size": [
+          416,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2992,
+          2368
+        ],
+        "size": [
+          1024,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          848,
+          2912
+        ],
+        "size": [
+          1824,
+          320
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1568,
+          2816
+        ],
+        "size": [
+          1120,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2672,
+          2960
+        ],
+        "size": [
+          736,
+          240
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          3408,
+          3072
+        ],
+        "size": [
+          768,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          2224
+        ],
+        "size": [
+          64,
+          416
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          2224
+        ],
+        "size": [
+          64,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          1696
+        ],
+        "size": [
+          4016,
+          672
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          4656,
+          3072
+        ],
+        "size": [
+          176,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          5184,
+          3072
+        ],
+        "size": [
+          176,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          6176,
+          3072
+        ],
+        "size": [
+          224,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1888,
+          2672
+        ],
+        "size": [
+          832,
+          144
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          6320,
+          1584
+        ],
+        "size": [
+          80,
+          1344
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          2992,
+          2448
+        ],
+        "size": [
+          1024,
+          320
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          848,
+          2848
+        ],
+        "size": [
+          720,
+          64
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          2896,
+          2368
+        ],
+        "size": [
+          96,
+          448
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          2720,
+          2688
+        ],
+        "size": [
+          48,
+          208
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          4416,
+          2848
+        ],
+        "size": [
+          96,
+          352
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          4960,
+          2848
+        ],
+        "size": [
+          96,
+          352
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          5360,
+          3120
+        ],
+        "size": [
+          400,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1568,
+          2736
+        ],
+        "size": [
+          320,
+          80
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          880,
+          2784
+        ],
+        "size": [
+          272,
+          64
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1376,
+          2784
+        ],
+        "size": [
+          192,
+          64
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          5360,
+          3168
+        ],
+        "size": [
+          816,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          3136,
+          2944
+        ],
+        "size": [
+          272,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          4176,
+          3184
+        ],
+        "size": [
+          480,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          4832,
+          3184
+        ],
+        "size": [
+          352,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          3552,
+          2768
+        ],
+        "size": [
+          80,
+          176
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          6320,
+          2928
+        ],
+        "size": [
+          80,
+          144
+        ],
+        "room_size": [
+          6400,
+          3200
+        ],
+        "room_pos": [
+          2,
+          1
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          176,
+          3152
+        ],
+        "size": [
+          256,
+          48
+        ],
+        "room_size": [
+          6400,
+          3200
+        ],
+        "room_pos": [
+          2,
+          1
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(3, 1)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        3,
+        1
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          1536,
+          496
+        ],
+        "size": [
+          240,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1872,
+          432
+        ],
+        "size": [
+          48,
+          384
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1648,
+          816
+        ],
+        "size": [
+          272,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1424,
+          816
+        ],
+        "size": [
+          144,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1008,
+          816
+        ],
+        "size": [
+          208,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1008,
+          880
+        ],
+        "size": [
+          208,
+          240
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1216,
+          960
+        ],
+        "size": [
+          720,
+          160
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1424,
+          880
+        ],
+        "size": [
+          496,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          576
+        ],
+        "size": [
+          912,
+          528
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          912,
+          576
+        ],
+        "size": [
+          128,
+          160
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1872,
+          64
+        ],
+        "size": [
+          48,
+          368
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          1920,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          64
+        ],
+        "size": [
+          64,
+          352
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          1232,
+          0
+        ],
+        "size": [
+          64,
+          592
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1472,
+          416
+        ],
+        "size": [
+          64,
+          304
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1040,
+          672
+        ],
+        "size": [
+          688,
+          64
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1568,
+          832
+        ],
+        "size": [
+          80,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1216,
+          912
+        ],
+        "size": [
+          208,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          0,
+          416
+        ],
+        "size": [
+          64,
+          160
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          3,
+          1
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          912,
+          1056
+        ],
+        "size": [
+          96,
+          32
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          3,
+          1
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(3, 0)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        3,
+        0
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          96,
+          192
+        ],
+        "size": [
+          368,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          464,
+          0
+        ],
+        "size": [
+          80,
+          256
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          48
+        ],
+        "size": [
+          32,
+          864
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          912
+        ],
+        "size": [
+          32,
+          176
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          192,
+          80
+        ],
+        "size": [
+          176,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          96,
+          256
+        ],
+        "size": [
+          80,
+          720
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1248,
+          208
+        ],
+        "size": [
+          32,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1216,
+          208
+        ],
+        "size": [
+          80,
+          480
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          688,
+          624
+        ],
+        "size": [
+          96,
+          464
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          32,
+          1056
+        ],
+        "size": [
+          272,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          176,
+          256
+        ],
+        "size": [
+          368,
+          288
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          544,
+          0
+        ],
+        "size": [
+          544,
+          192
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1088,
+          0
+        ],
+        "size": [
+          832,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1856,
+          80
+        ],
+        "size": [
+          64,
+          1008
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          304,
+          848
+        ],
+        "size": [
+          32,
+          208
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          784,
+          640
+        ],
+        "size": [
+          432,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          304,
+          1056
+        ],
+        "size": [
+          384,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          432,
+          544
+        ],
+        "size": [
+          64,
+          160
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          864,
+          336
+        ],
+        "size": [
+          32,
+          304
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          784,
+          1040
+        ],
+        "size": [
+          1072,
+          48
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          3,
+          0
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          96,
+          0
+        ],
+        "size": [
+          368,
+          48
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          3,
+          0
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(3, -1)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        3,
+        -1
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          32,
+          1088
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          1056
+        ],
+        "size": [
+          1920,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1808,
+          0
+        ],
+        "size": [
+          112,
+          1056
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          32,
+          0
+        ],
+        "size": [
+          1776,
+          48
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [],
+    "loaders": []
+  },
+  "(0, 1)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        0,
+        1
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          256,
+          1040
+        ],
+        "size": [
+          208,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          1040
+        ],
+        "size": [
+          176,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1792,
+          256
+        ],
+        "size": [
+          128,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          736,
+          1040
+        ],
+        "size": [
+          144,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1248,
+          1040
+        ],
+        "size": [
+          112,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1648,
+          864
+        ],
+        "size": [
+          112,
+          224
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1248,
+          656
+        ],
+        "size": [
+          112,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          592,
+          576
+        ],
+        "size": [
+          144,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          96,
+          512
+        ],
+        "size": [
+          176,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          592,
+          304
+        ],
+        "size": [
+          144,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          800,
+          112
+        ],
+        "size": [
+          192,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1168,
+          304
+        ],
+        "size": [
+          32,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1008,
+          304
+        ],
+        "size": [
+          32,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1792,
+          288
+        ],
+        "size": [
+          128,
+          816
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          96,
+          1040
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          96,
+          0
+        ],
+        "size": [
+          1728,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1792,
+          0
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          464,
+          1056
+        ],
+        "size": [
+          272,
+          48
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          880,
+          1056
+        ],
+        "size": [
+          368,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1360,
+          1056
+        ],
+        "size": [
+          288,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1760,
+          1056
+        ],
+        "size": [
+          32,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          1872,
+          96
+        ],
+        "size": [
+          48,
+          160
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          0,
+          1
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          192,
+          1056
+        ],
+        "size": [
+          192,
+          32
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          0,
+          1
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(1, 1)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        1,
+        1
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          1920,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          160
+        ],
+        "size": [
+          48,
+          192
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1296,
+          320
+        ],
+        "size": [
+          32,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1680,
+          304
+        ],
+        "size": [
+          96,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1872,
+          64
+        ],
+        "size": [
+          48,
+          1024
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1728,
+          640
+        ],
+        "size": [
+          144,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1088,
+          640
+        ],
+        "size": [
+          128,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          352,
+          640
+        ],
+        "size": [
+          64,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          352
+        ],
+        "size": [
+          48,
+          736
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          48,
+          1040
+        ],
+        "size": [
+          1744,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          48,
+          320
+        ],
+        "size": [
+          768,
+          32
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          1536,
+          176
+        ],
+        "size": [
+          144,
+          160
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          816,
+          336
+        ],
+        "size": [
+          480,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1216,
+          656
+        ],
+        "size": [
+          512,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          416,
+          656
+        ],
+        "size": [
+          288,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          704,
+          656
+        ],
+        "size": [
+          384,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          352,
+          912
+        ],
+        "size": [
+          144,
+          128
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          976,
+          912
+        ],
+        "size": [
+          144,
+          128
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1456,
+          912
+        ],
+        "size": [
+          144,
+          144
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          368,
+          208
+        ],
+        "size": [
+          112,
+          112
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          1712,
+          1056
+        ],
+        "size": [
+          128,
+          32
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          1,
+          1
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          32
+        ],
+        "size": [
+          32,
+          128
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          1,
+          1
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(1, 0)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        1,
+        0
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          224,
+          352
+        ],
+        "size": [
+          1696,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1536,
+          224
+        ],
+        "size": [
+          128,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          1104,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1088,
+          0
+        ],
+        "size": [
+          160,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1104,
+          0
+        ],
+        "size": [
+          576,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1808,
+          0
+        ],
+        "size": [
+          112,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1888,
+          64
+        ],
+        "size": [
+          32,
+          288
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          624
+        ],
+        "size": [
+          320,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          480,
+          624
+        ],
+        "size": [
+          176,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          672
+        ],
+        "size": [
+          656,
+          416
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          656,
+          1056
+        ],
+        "size": [
+          128,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          928,
+          1056
+        ],
+        "size": [
+          976,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          976,
+          544
+        ],
+        "size": [
+          176,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1056,
+          928
+        ],
+        "size": [
+          80,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1696,
+          496
+        ],
+        "size": [
+          64,
+          560
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1664,
+          480
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1888,
+          400
+        ],
+        "size": [
+          32,
+          560
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1888,
+          1056
+        ],
+        "size": [
+          32,
+          32
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          1456,
+          320
+        ],
+        "size": [
+          80,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1456,
+          0
+        ],
+        "size": [
+          80,
+          240
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1104,
+          224
+        ],
+        "size": [
+          112,
+          128
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1104,
+          0
+        ],
+        "size": [
+          112,
+          128
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          752,
+          192
+        ],
+        "size": [
+          128,
+          160
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          320,
+          640
+        ],
+        "size": [
+          160,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          320,
+          400
+        ],
+        "size": [
+          160,
+          64
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          784,
+          1072
+        ],
+        "size": [
+          144,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          784,
+          800
+        ],
+        "size": [
+          144,
+          96
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          784,
+          400
+        ],
+        "size": [
+          96,
+          128
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          784,
+          528
+        ],
+        "size": [
+          96,
+          144
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          784,
+          672
+        ],
+        "size": [
+          96,
+          128
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1280,
+          640
+        ],
+        "size": [
+          48,
+          288
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1152,
+          560
+        ],
+        "size": [
+          176,
+          80
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          1888,
+          960
+        ],
+        "size": [
+          32,
+          112
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          1,
+          0
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1680,
+          0
+        ],
+        "size": [
+          144,
+          48
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          1,
+          0
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  },
+  "(2, 0)": {
+    "room": {
+      "size": [
+        1920,
+        1088
+      ],
+      "pos": [
+        2,
+        0
+      ]
+    },
+    "objs": [
+      {
+        "pos": [
+          0,
+          1040
+        ],
+        "size": [
+          512,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1184,
+          1040
+        ],
+        "size": [
+          368,
+          48
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1552,
+          640
+        ],
+        "size": [
+          368,
+          448
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1296,
+          640
+        ],
+        "size": [
+          128,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1008,
+          640
+        ],
+        "size": [
+          160,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          784,
+          640
+        ],
+        "size": [
+          96,
+          32
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          464
+        ],
+        "size": [
+          64,
+          448
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          64,
+          464
+        ],
+        "size": [
+          256,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          0,
+          0
+        ],
+        "size": [
+          64,
+          464
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1536,
+          336
+        ],
+        "size": [
+          384,
+          128
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          240,
+          272
+        ],
+        "size": [
+          80,
+          80
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          64,
+          0
+        ],
+        "size": [
+          1408,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1760,
+          0
+        ],
+        "size": [
+          160,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1536,
+          0
+        ],
+        "size": [
+          64,
+          64
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1840,
+          464
+        ],
+        "size": [
+          80,
+          176
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1760,
+          64
+        ],
+        "size": [
+          160,
+          272
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1088,
+          0
+        ],
+        "size": [
+          144,
+          16
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1056,
+          0
+        ],
+        "size": [
+          544,
+          16
+        ],
+        "texture_name": "Green.webp"
+      }
+    ],
+    "spikes": [
+      {
+        "pos": [
+          512,
+          1056
+        ],
+        "size": [
+          672,
+          32
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          1424,
+          656
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          864,
+          400
+        ],
+        "size": [
+          672,
+          64
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          880,
+          656
+        ],
+        "size": [
+          128,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          416,
+          656
+        ],
+        "size": [
+          368,
+          16
+        ],
+        "texture_name": "crowbox.png"
+      },
+      {
+        "pos": [
+          560,
+          176
+        ],
+        "size": [
+          80,
+          80
+        ],
+        "texture_name": "crowbox.png"
+      }
+    ],
+    "loaders": [
+      {
+        "pos": [
+          0,
+          912
+        ],
+        "size": [
+          48,
+          144
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          2,
+          0
+        ],
+        "texture_name": "Green.webp"
+      },
+      {
+        "pos": [
+          1600,
+          0
+        ],
+        "size": [
+          160,
+          48
+        ],
+        "room_size": [
+          1920,
+          1088
+        ],
+        "room_pos": [
+          2,
+          0
+        ],
+        "texture_name": "Green.webp"
+      }
+    ]
+  }
+}

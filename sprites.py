@@ -144,6 +144,7 @@ class Player(sprite):
         self.dashy = 0
         self.facing = 1
         self.paused = False
+        self.death_count = 0
     @property
     def respawn_point(self):
         return (self.respawn_x,self.respawn_y)
@@ -333,6 +334,7 @@ class Player(sprite):
         self.pos = self.respawn_point
         self.in_dash = False
         crumble.pos = (-10000,10000)
+        self.death_count += 1
 class crumble_block(sprite):
     def __init__(self, pos, size, texture_name):
         super().__init__(pos, size, texture_name)
